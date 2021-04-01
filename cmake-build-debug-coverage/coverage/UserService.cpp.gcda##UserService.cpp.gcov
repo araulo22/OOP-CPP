@@ -1,0 +1,81 @@
+        -:    0:Source:C:/Users/araul/CLionProjects/a45-araulo22/UserService.cpp
+        -:    0:Graph:C:\Users\araul\CLionProjects\a45-araulo22\cmake-build-debug-coverage\CMakeFiles\a45_araulo22.dir\UserService.cpp.gcno
+        -:    0:Data:C:\Users\araul\CLionProjects\a45-araulo22\cmake-build-debug-coverage\CMakeFiles\a45_araulo22.dir\UserService.cpp.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1://
+        -:    2:// Created by araul on 28.03.2021.
+        -:    3://
+        -:    4:#include "UserService.h"
+        -:    5:#include <iostream>
+        -:    6:
+        -:    7:///Constructor
+        -:    8:///currentMoviePosition is the position in the watch list
+       14:    9:UserService::UserService(Repository& repository, int currentMoviePosition) : repository{ repository }, currentMoviePosition{ currentMoviePosition }, currentMoviesByGenre{repository.getAllMovies()}{}
+       14:    9-block  0
+        -:   10:
+        -:   11:///Get the list of movies in the watch list
+        1:   12:std::vector<Movie> UserService::userGetWatchList()
+        -:   13:{
+        1:   14:    return repository.getAllWatchListMovies();
+        1:   14-block  0
+        -:   15:}
+        -:   16:
+        -:   17:///Get the list of movies with a given genre
+        7:   18:int UserService::listMoviesByGenre(const std::string& genreGiven)
+        -:   19:{
+        7:   20:    currentMoviesByGenre = repository.getMoviesByGenre(genreGiven);
+        7:   20-block  0
+        7:   21:    if (currentMoviesByGenre.empty())
+        1:   22:        return -1;
+        1:   22-block  0
+        6:   23:    currentMoviePosition = 0;
+        6:   24:    return 1;
+        6:   24-block  0
+        -:   25:}
+        -:   26:
+        -:   27:///Add a movie to the watch list by the current movie position
+        4:   28:int UserService::addMovieToWatchList()
+        -:   29:{
+        4:   30:    return repository.addMovieToWatchlist(currentMoviesByGenre[currentMoviePosition]);
+        4:   30-block  0
+        -:   31:}
+        -:   32:
+        -:   33:///Add a movie to the watch list by the given title
+        4:   34:int UserService::addMovieToWatchListByTitle(const std::string& titleOfTheMovieToAdd)
+        -:   35:{
+        4:   36:    return repository.addMovieToWatchListByTitle(titleOfTheMovieToAdd);
+        4:   36-block  0
+        -:   37:}
+        -:   38:
+        -:   39:///Iterate to the next movie in the list
+        4:   40:void UserService::goToNextMovieByGenre()
+        -:   41:{
+        4:   42:    currentMoviePosition++;
+        4:   43:    if(currentMoviePosition == currentMoviesByGenre.size())
+        4:   43-block  0
+        1:   44:        currentMoviePosition = 0;
+        1:   44-block  0
+        4:   45:}
+        -:   46:
+        -:   47:///Get the current movie in the list
+        2:   48:Movie UserService::getCurrentMovie()
+        -:   49:{
+        2:   50:    return currentMoviesByGenre[currentMoviePosition];
+        2:   50-block  0
+        -:   51:}
+        -:   52:
+        1:   53:int UserService::removeMovieFromWatchList(const std::string &title, bool liked) {
+        1:   54:    return repository.deleteMovieFromWatchList(title, liked);
+        1:   54-block  0
+        -:   55:}
+        -:   56:
+        1:   57:std::vector<Movie> UserService::userGetMovieList() {
+        1:   58:    return repository.getAllMovies();
+        1:   58-block  0
+        -:   59:}
+        -:   60:
+        1:   61:int UserService::getWatchListLength() {
+        1:   62:        return repository.getNumberOfMoviesWatchList();
+        1:   62-block  0
+        -:   63:}

@@ -1,0 +1,493 @@
+        -:    0:Source:C:/Users/araul/CLionProjects/a45-araulo22/UI.cpp
+        -:    0:Graph:C:\Users\araul\CLionProjects\a45-araulo22\cmake-build-debug-coverage\CMakeFiles\a45_araulo22.dir\UI.cpp.gcno
+        -:    0:Data:C:\Users\araul\CLionProjects\a45-araulo22\cmake-build-debug-coverage\CMakeFiles\a45_araulo22.dir\UI.cpp.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1://
+        -:    2:// Created by araul on 28.03.2021.
+        -:    3://
+        -:    4:#include "UI.h"
+        -:    5:#include <iostream>
+        -:    6:#include <windows.h>
+        -:    7:#include <shellapi.h>
+        1:    8:UI::UI(AdminService& adminService, UserService& userService): adminService { adminService } , userService{ userService }{}
+        -:    9:
+        1:   10:void UI::runApp()
+        -:   11:{
+        2:   12:    std::string command;
+        1:   12-block  0
+        1:   12-block  1
+    $$$$$:   12-block  2
+        -:   13:    while (true) {
+        2:   14:        std::cout << "Choose: launch / exit\n";
+        2:   14-block  0
+        1:   14-block  1
+        2:   15:        std::cout << "Command: ";
+        2:   15-block  0
+        2:   16:        std::cin >> command;
+        2:   16-block  0
+        2:   17:        if (command == "launch") {
+        2:   17-block  0
+    #####:   18:            std::cout << "Choose: ADMIN / USER\n";
+    %%%%%:   18-block  0
+    #####:   19:            std::cin >> command;
+    %%%%%:   19-block  0
+    #####:   20:            if (command == "ADMIN")
+    %%%%%:   20-block  0
+    #####:   21:                runAdmin();
+    %%%%%:   21-block  0
+        -:   22:            else
+    #####:   23:                if (command == "USER")
+    %%%%%:   23-block  0
+    #####:   24:                    runUser();
+    %%%%%:   24-block  0
+        -:   25:                else
+    #####:   26:                    std::cout << "Invalid input!\n";
+    %%%%%:   26-block  0
+    #####:   27:            break;
+    %%%%%:   27-block  0
+        -:   28:        }
+        2:   29:        else if (command == "exit")
+        2:   29-block  0
+        1:   30:            break;
+        1:   30-block  0
+        -:   31:        else
+        1:   32:            std::cout << "Invalid input!\n";
+        1:   32-block  0
+        -:   33:    }
+        1:   34:}
+        -:   35:
+    #####:   36:void UI::runAdmin()
+        -:   37:{
+    #####:   38:    std::cout << "Administrator mode enabled!\n";
+    %%%%%:   38-block  0
+    #####:   39:    std::string consoleInput;
+    %%%%%:   39-block  0
+    %%%%%:   39-block  1
+    $$$$$:   39-block  2
+    #####:   40:    int changeMode = 0;
+    #####:   41:    while (true && !changeMode) {
+    %%%%%:   41-block  0
+    %%%%%:   41-block  1
+    #####:   42:        std::cout << "Choose: add / update / delete / list / mode / exit\n";
+    %%%%%:   42-block  0
+    #####:   43:        std::cout << "Input: ";
+    %%%%%:   43-block  0
+    #####:   44:        std::cin >> consoleInput;
+    %%%%%:   44-block  0
+    #####:   45:        if (consoleInput == "add")
+    %%%%%:   45-block  0
+    #####:   46:            uiAdminAdd();
+    %%%%%:   46-block  0
+    #####:   47:        else if (consoleInput == "update")
+    %%%%%:   47-block  0
+    #####:   48:            uiAdminUpdate();
+    %%%%%:   48-block  0
+    #####:   49:        else if (consoleInput == "delete")
+    %%%%%:   49-block  0
+    #####:   50:            uiAdminDelete();
+    %%%%%:   50-block  0
+    #####:   51:        else if (consoleInput == "list")
+    %%%%%:   51-block  0
+    #####:   52:            uiAdminList();
+    %%%%%:   52-block  0
+    #####:   53:        else if (consoleInput == "mode") {
+    %%%%%:   53-block  0
+    #####:   54:            std::string modeToChange;
+    %%%%%:   54-block  0
+    %%%%%:   54-block  1
+    $$$$$:   54-block  2
+    #####:   55:            std::cout << "Choose: ADMIN / USER\n";
+    #####:   56:            std::cin >> modeToChange;
+    %%%%%:   56-block  0
+    #####:   57:            if (modeToChange == "USER") {
+    %%%%%:   57-block  0
+    #####:   58:                changeMode = 1;
+    #####:   59:                runUser();
+    %%%%%:   59-block  0
+        -:   60:            }
+        -:   61:        }
+    #####:   62:        else if (consoleInput == "exit")
+    %%%%%:   62-block  0
+    #####:   63:            break;
+    %%%%%:   63-block  0
+        -:   64:        else
+    #####:   65:            std::cout << "Invalid input! \n";
+    %%%%%:   65-block  0
+        -:   66:    }
+        -:   67:
+    #####:   68:}
+        -:   69:
+    #####:   70:void UI::runUser()
+        -:   71:{
+    #####:   72:    std::cout << "User mode enabled!\n";
+    %%%%%:   72-block  0
+    #####:   73:    userService.listMoviesByGenre("");
+    %%%%%:   73-block  0
+    %%%%%:   73-block  1
+    %%%%%:   73-block  2
+    $$$$$:   73-block  3
+    $$$$$:   73-block  4
+    $$$$$:   73-block  5
+    $$$$$:   73-block  6
+    #####:   74:    Movie currentMovie;
+    %%%%%:   74-block  0
+    %%%%%:   74-block  1
+    %%%%%:   74-block  2
+    $$$$$:   74-block  3
+    $$$$$:   74-block  4
+    $$$$$:   74-block  5
+    $$$$$:   74-block  6
+    $$$$$:   74-block  7
+    $$$$$:   74-block  8
+    $$$$$:   74-block  9
+    #####:   75:    std::string consoleInput;
+    %%%%%:   75-block  0
+    $$$$$:   75-block  1
+    #####:   76:    int changeMode = 0;
+    #####:   77:    while (true && !changeMode && !inList) {
+    %%%%%:   77-block  0
+    %%%%%:   77-block  1
+    %%%%%:   77-block  2
+    #####:   78:        std::cout << "Choose: list / next / watchList / save / remove / mode / exit\n";
+    %%%%%:   78-block  0
+    #####:   79:        std::cout << "Movie format: <title> <genre> <year> <likes> <trailer>\n";
+    %%%%%:   79-block  0
+    #####:   80:        std::cout << "Input: ";
+    %%%%%:   80-block  0
+    #####:   81:        std::cin >> consoleInput;
+    %%%%%:   81-block  0
+    #####:   82:        if (consoleInput == "list") {
+    %%%%%:   82-block  0
+    #####:   83:            inList = true;
+    #####:   84:            uiUserList();
+    %%%%%:   84-block  0
+        -:   85:        }
+    #####:   86:        else if (consoleInput == "mode") {
+    %%%%%:   86-block  0
+    #####:   87:            std::string modeToChange;
+    %%%%%:   87-block  0
+    %%%%%:   87-block  1
+    $$$$$:   87-block  2
+    #####:   88:            std::cout << "Choose: ADMIN / USER\n";
+    #####:   89:            std::cin >> modeToChange;
+    %%%%%:   89-block  0
+    #####:   90:            if (modeToChange == "ADMIN") {
+    %%%%%:   90-block  0
+    #####:   91:                changeMode = 1;
+    #####:   92:                runAdmin();
+    %%%%%:   92-block  0
+        -:   93:            }
+        -:   94:        }
+    #####:   95:        else if (consoleInput == "next") {
+    %%%%%:   95-block  0
+    #####:   96:            currentMovie = userService.getCurrentMovie();
+    %%%%%:   96-block  0
+    %%%%%:   96-block  1
+    %%%%%:   96-block  2
+    $$$$$:   96-block  3
+    $$$$$:   96-block  4
+    #####:   97:            std::cout << currentMovie;
+    #####:   98:            uiUserNext();
+    %%%%%:   98-block  0
+        -:   99:        }
+    #####:  100:        else if (consoleInput == "watchList")
+    %%%%%:  100-block  0
+    #####:  101:            uiUserWatchList();
+    %%%%%:  101-block  0
+    #####:  102:        else if (consoleInput == "save")
+    %%%%%:  102-block  0
+    #####:  103:            uiUserSave();
+    %%%%%:  103-block  0
+    #####:  104:        else if (consoleInput == "remove")
+    %%%%%:  104-block  0
+    #####:  105:            uiUserRemove();
+    %%%%%:  105-block  0
+    #####:  106:        else if (consoleInput == "exit")
+    %%%%%:  106-block  0
+    #####:  107:            break;
+    %%%%%:  107-block  0
+        -:  108:        else
+    #####:  109:            std::cout << "Invalid input! \n";
+    %%%%%:  109-block  0
+        -:  110:    }
+    #####:  111:}
+        -:  112:
+    #####:  113:void UI::uiAdminAdd()
+        -:  114:{
+    #####:  115:    std::string title, genre, trailer, consoleInput;
+    %%%%%:  115-block  0
+    %%%%%:  115-block  1
+    $$$$$:  115-block  2
+    $$$$$:  115-block  3
+    $$$$$:  115-block  4
+    $$$$$:  115-block  5
+        -:  116:    int yearOfRelease, numberOfLikes;
+    #####:  117:    std::cin >> consoleInput;
+    #####:  118:    title = consoleInput.substr(0, consoleInput.size() - 1);
+    %%%%%:  118-block  0
+    %%%%%:  118-block  1
+    #####:  119:    std::cin >> consoleInput;
+    #####:  120:    genre = consoleInput.substr(0, consoleInput.size() - 1);
+    %%%%%:  120-block  0
+    %%%%%:  120-block  1
+    #####:  121:    std::cin >> consoleInput;
+    #####:  122:    yearOfRelease = stoi(consoleInput.substr(0, consoleInput.size() - 1));
+    %%%%%:  122-block  0
+    %%%%%:  122-block  1
+    %%%%%:  122-block  2
+    $$$$$:  122-block  3
+    $$$$$:  122-block  4
+    #####:  123:    std::cin >> consoleInput;
+    #####:  124:    numberOfLikes = stoi(consoleInput.substr(0, consoleInput.size() - 1));
+    %%%%%:  124-block  0
+    %%%%%:  124-block  1
+    %%%%%:  124-block  2
+    $$$$$:  124-block  3
+    $$$$$:  124-block  4
+    #####:  125:    std::cin >> consoleInput;
+    #####:  126:    trailer = consoleInput;
+    %%%%%:  126-block  0
+    #####:  127:    int isFunctionSuccessful = adminService.adminAddMovie(title, genre, yearOfRelease, numberOfLikes, trailer);
+    %%%%%:  127-block  0
+    #####:  128:    if (isFunctionSuccessful == -1) {
+    %%%%%:  128-block  0
+    #####:  129:        std::cout << "ERROR: Failed to add movie! Check input or already added movies.\n";
+    %%%%%:  129-block  0
+        -:  130:    }
+    #####:  131:}
+        -:  132:
+    #####:  133:void UI::uiAdminDelete()
+        -:  134:{
+    #####:  135:    std::cout << "Movie title: \n";
+    %%%%%:  135-block  0
+    #####:  136:    std::string title, consoleInput;
+    %%%%%:  136-block  0
+    %%%%%:  136-block  1
+    $$$$$:  136-block  2
+    $$$$$:  136-block  3
+    #####:  137:    getline(std::cin, consoleInput);
+    #####:  138:    title = consoleInput.substr(1);
+    %%%%%:  138-block  0
+    %%%%%:  138-block  1
+    #####:  139:    int isFunctionSuccessful = adminService.adminDeleteMovie(title);
+    #####:  140:    if (isFunctionSuccessful == -1) {
+    %%%%%:  140-block  0
+    #####:  141:        std::cout << "ERROR: Movie is not in the list!\n";
+    %%%%%:  141-block  0
+        -:  142:    }
+    #####:  143:}
+        -:  144:
+    #####:  145:void UI::uiAdminUpdate()
+        -:  146:{
+    #####:  147:    std::string title, genre, trailer, consoleInput;
+    %%%%%:  147-block  0
+    %%%%%:  147-block  1
+    $$$$$:  147-block  2
+    $$$$$:  147-block  3
+    $$$$$:  147-block  4
+    $$$$$:  147-block  5
+        -:  148:    int yearOfRelease, numberOfLikes;
+    #####:  149:    std::cin >> consoleInput;
+    #####:  150:    title = consoleInput.substr(0, consoleInput.size() - 1);
+    %%%%%:  150-block  0
+    %%%%%:  150-block  1
+    #####:  151:    std::cin >> consoleInput;
+    #####:  152:    genre = consoleInput.substr(0, consoleInput.size() - 1);
+    %%%%%:  152-block  0
+    %%%%%:  152-block  1
+    #####:  153:    std::cin >> consoleInput;
+    #####:  154:    yearOfRelease = stoi(consoleInput.substr(0, consoleInput.size() - 1));
+    %%%%%:  154-block  0
+    %%%%%:  154-block  1
+    %%%%%:  154-block  2
+    $$$$$:  154-block  3
+    $$$$$:  154-block  4
+    #####:  155:    std::cin >> consoleInput;
+    #####:  156:    numberOfLikes = stoi(consoleInput.substr(0, consoleInput.size() - 1));
+    %%%%%:  156-block  0
+    %%%%%:  156-block  1
+    %%%%%:  156-block  2
+    $$$$$:  156-block  3
+    $$$$$:  156-block  4
+    #####:  157:    std::cin >> consoleInput;
+    #####:  158:    trailer = consoleInput;
+    %%%%%:  158-block  0
+    #####:  159:    int isFunctionSuccessful = adminService.adminUpdateMovie(title, genre, yearOfRelease, numberOfLikes, trailer);
+    %%%%%:  159-block  0
+    #####:  160:    if (isFunctionSuccessful == -1) {
+    %%%%%:  160-block  0
+    #####:  161:        std::cout << "ERROR: Movie is not in the list!\n";
+    %%%%%:  161-block  0
+        -:  162:    }
+    #####:  163:}
+        -:  164:
+    #####:  165:void UI::uiAdminList()
+        -:  166:{
+    #####:  167:    std::vector<Movie>listOfMovies = adminService.adminGetMovieList();
+    %%%%%:  167-block  0
+    %%%%%:  167-block  1
+    $$$$$:  167-block  2
+    #####:  168:    for (auto & listOfMovie : listOfMovies)
+    %%%%%:  168-block  0
+    %%%%%:  168-block  1
+    %%%%%:  168-block  2
+    %%%%%:  168-block  3
+    #####:  169:        std::cout << listOfMovie << '\n';
+    %%%%%:  169-block  0
+    #####:  170:}
+        -:  171:
+    #####:  172:void UI::uiUserAdd() {
+    #####:  173:    int isFunctionSuccessful = userService.addMovieToWatchList();
+    %%%%%:  173-block  0
+    #####:  174:    if (isFunctionSuccessful == -1)
+    #####:  175:        std::cout << "ERROR: Failed to add movie!\n";
+    %%%%%:  175-block  0
+    #####:  176:}
+        -:  177:
+    #####:  178:void UI::uiUserWatchList()
+        -:  179:{
+    #####:  180:    std::vector<Movie>listOfMovies = userService.userGetWatchList();
+    %%%%%:  180-block  0
+    %%%%%:  180-block  1
+    $$$$$:  180-block  2
+    #####:  181:    for (auto & listOfMovie : listOfMovies)
+    %%%%%:  181-block  0
+    %%%%%:  181-block  1
+    %%%%%:  181-block  2
+    %%%%%:  181-block  3
+    #####:  182:        std::cout << listOfMovie << '\n';
+    %%%%%:  182-block  0
+    #####:  183:}
+        -:  184:
+    #####:  185:void UI::uiUserNext() {
+    #####:  186:    userService.goToNextMovieByGenre();
+    %%%%%:  186-block  0
+    #####:  187:}
+        -:  188:
+    #####:  189:void UI::uiUserSave()
+        -:  190:{
+    #####:  191:    std::cout << "Movie title: \n";
+    %%%%%:  191-block  0
+    #####:  192:    std::string title;
+    %%%%%:  192-block  0
+    %%%%%:  192-block  1
+    $$$$$:  192-block  2
+    #####:  193:    std::cin >> title;
+    #####:  194:    int isFunctionSuccessful = userService.addMovieToWatchListByTitle(title);
+    %%%%%:  194-block  0
+    #####:  195:    if (isFunctionSuccessful == -1)
+    %%%%%:  195-block  0
+    #####:  196:        std::cout << "ERROR: Invalid movie!\n";
+    %%%%%:  196-block  0
+    #####:  197:}
+        -:  198:
+    #####:  199:void UI::uiUserList()
+        -:  200:{
+        -:  201:
+    #####:  202:    std::string consoleInput, genre;
+    %%%%%:  202-block  0
+    $$$$$:  202-block  1
+    $$$$$:  202-block  2
+    #####:  203:    Movie currentMovie;
+    %%%%%:  203-block  0
+    %%%%%:  203-block  1
+    %%%%%:  203-block  2
+    %%%%%:  203-block  3
+    $$$$$:  203-block  4
+    $$$$$:  203-block  5
+    $$$$$:  203-block  6
+    $$$$$:  203-block  7
+    $$$$$:  203-block  8
+    $$$$$:  203-block  9
+    $$$$$:  203-block 10
+    #####:  204:    std::cout << "Specify a genre: \n";
+    #####:  205:    std::cin >> genre;
+    %%%%%:  205-block  0
+    #####:  206:    int isFunctionSuccessful = userService.listMoviesByGenre(genre);
+    %%%%%:  206-block  0
+    #####:  207:    if (isFunctionSuccessful == -1)
+    %%%%%:  207-block  0
+    #####:  208:        std::cout << "ERROR: Failed to select movies!\n";
+    %%%%%:  208-block  0
+    #####:  209:    while (isFunctionSuccessful != -1 && inList) {
+    %%%%%:  209-block  0
+    %%%%%:  209-block  1
+    %%%%%:  209-block  2
+        -:  210:        try {
+    #####:  211:            currentMovie = userService.getCurrentMovie();
+    %%%%%:  211-block  0
+    %%%%%:  211-block  1
+    %%%%%:  211-block  2
+    $$$$$:  211-block  3
+    $$$$$:  211-block  4
+        -:  212:        }
+    =====:  213:        catch (std::exception &Exception) {
+    $$$$$:  213-block  0
+    $$$$$:  213-block  1
+    $$$$$:  213-block  2
+    =====:  214:            std::cout << Exception.what() << '\n';
+    $$$$$:  214-block  0
+        -:  215:        }
+    #####:  216:        std::cout << currentMovie << '\n';
+    %%%%%:  216-block  0
+    %%%%%:  216-block  1
+    #####:  217:        ShellExecuteA(NULL, "open", userService.getCurrentMovie().getTrailer().c_str(), NULL, NULL, SW_SHOWNORMAL);
+    %%%%%:  217-block  0
+    %%%%%:  217-block  1
+    %%%%%:  217-block  2
+    %%%%%:  217-block  3
+    $$$$$:  217-block  4
+    $$$$$:  217-block  5
+    #####:  218:        std::cout << "Commands: add / next / exit \n";
+    #####:  219:        std::cout << "Input: ";
+    %%%%%:  219-block  0
+    #####:  220:        std::cin >> consoleInput;
+    %%%%%:  220-block  0
+    #####:  221:        if (consoleInput == "add") {
+    %%%%%:  221-block  0
+    #####:  222:            uiUserAdd();
+    %%%%%:  222-block  0
+    #####:  223:            uiUserNext();
+    %%%%%:  223-block  0
+        -:  224:        }
+    #####:  225:        else if (consoleInput == "next")
+    %%%%%:  225-block  0
+    #####:  226:            uiUserNext();
+    %%%%%:  226-block  0
+    #####:  227:        else if (consoleInput == "exit")
+    %%%%%:  227-block  0
+    #####:  228:            inList = false;
+    %%%%%:  228-block  0
+        -:  229:        else
+    #####:  230:            std::cout << "Invalid input!\n";
+    %%%%%:  230-block  0
+        -:  231:    }
+        -:  232:
+    #####:  233:}
+        -:  234:
+    #####:  235:void UI::uiUserRemove() {
+    #####:  236:    std::cout << "Movie title: \n";
+    %%%%%:  236-block  0
+    #####:  237:    std::string title, enjoy;
+    %%%%%:  237-block  0
+    %%%%%:  237-block  1
+    $$$$$:  237-block  2
+    $$$$$:  237-block  3
+    #####:  238:    std::cin >> title;
+    #####:  239:    std::cout << "Did you enjoy the movie? Type <yes> to add a like!\n";
+    %%%%%:  239-block  0
+    #####:  240:    std::cin >> enjoy;
+    %%%%%:  240-block  0
+    #####:  241:    bool liked = false;
+    #####:  242:    if(enjoy == "yes")
+    %%%%%:  242-block  0
+    #####:  243:        liked = true;
+    %%%%%:  243-block  0
+    #####:  244:    int isFunctionSuccessful = userService.removeMovieFromWatchList(title, liked);
+    %%%%%:  244-block  0
+    #####:  245:    if (isFunctionSuccessful == -1)
+    %%%%%:  245-block  0
+    #####:  246:        std::cout << "ERROR: Invalid movie!\n";
+    %%%%%:  246-block  0
+    #####:  247:}

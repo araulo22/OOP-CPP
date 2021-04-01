@@ -1,0 +1,130 @@
+        -:    0:Source:C:/Users/araul/CLionProjects/a45-araulo22/Movie.cpp
+        -:    0:Graph:C:\Users\araul\CLionProjects\a45-araulo22\cmake-build-debug-coverage\CMakeFiles\a45_araulo22.dir\Movie.cpp.gcno
+        -:    0:Data:C:\Users\araul\CLionProjects\a45-araulo22\cmake-build-debug-coverage\CMakeFiles\a45_araulo22.dir\Movie.cpp.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1://
+        -:    2:// Created by araul on 28.03.2021.
+        -:    3://
+        -:    4:
+        -:    5:#include "Movie.h"
+        -:    6:#include <algorithm>
+        -:    7:#include <iostream>
+        -:    8:
+      255:    9:Movie::Movie(const std::string &a, const std::string &b, const std::string &c, int d, int e) {
+      255:    9-block  0
+    $$$$$:    9-block  1
+    $$$$$:    9-block  2
+    $$$$$:    9-block  3
+      255:   10:    title = a;
+      255:   11:    genre = b;
+      255:   11-block  0
+      255:   12:    trailer = c;
+      255:   12-block  0
+      255:   13:    year = d;
+      255:   14:    likes = e;
+      255:   15:}
+      255:   15-block  0
+        -:   16:
+     1282:   17:const std::string& Movie::getTitle() const {
+     1282:   18:    return title;
+     1282:   18-block  0
+        -:   19:}
+        -:   20:
+        1:   21:void Movie::setTitle(const std::string &title) {
+        1:   22:    Movie::title = title;
+        1:   22-block  0
+        1:   23:}
+        -:   24:
+       74:   25:const std::string& Movie::getGenre() const {
+       74:   26:    return genre;
+       74:   26-block  0
+        -:   27:}
+        -:   28:
+        1:   29:void Movie::setGenre(const std::string &genre) {
+        1:   30:    Movie::genre = genre;
+        1:   30-block  0
+        1:   31:}
+        -:   32:
+        4:   33:const std::string& Movie::getTrailer() const {
+        4:   34:    return trailer;
+        4:   34-block  0
+        -:   35:}
+        -:   36:
+        1:   37:void Movie::setTrailer(const std::string &trailer) {
+        1:   38:    Movie::trailer = trailer;
+        1:   38-block  0
+        1:   39:}
+        -:   40:
+        4:   41:int Movie::getYear() const {
+        4:   42:    return year;
+        4:   42-block  0
+        -:   43:}
+        -:   44:
+        1:   45:void Movie::setYear(int year) {
+        1:   46:    Movie::year = year;
+        1:   47:}
+        -:   48:
+        5:   49:int Movie::getLikes() const {
+        5:   50:    return likes;
+        5:   50-block  0
+        -:   51:}
+        -:   52:
+        2:   53:void Movie::setLikes(int likes) {
+        2:   54:    Movie::likes = likes;
+        2:   55:}
+        -:   56:
+     1220:   57:bool Movie::operator==(const Movie &movie) const {
+     1220:   58:    return title == movie.getTitle();
+     1220:   58-block  0
+        -:   59:}
+        -:   60:
+        1:   61:bool Movie::operator!=(const Movie &movie) const {
+        1:   62:    return !(movie == *this);
+        1:   62-block  0
+        -:   63:}
+        -:   64:
+        2:   65:void Movie::operator=(const Movie &movie) {
+        2:   66:    title = movie.getTitle();
+        2:   66-block  0
+        2:   67:    genre = movie.getGenre();
+        2:   68:    trailer = movie.getTrailer();
+        2:   69:    year = movie.getYear();
+        2:   70:    likes = movie.getLikes();
+        2:   71:}
+        -:   72:
+        3:   73:std::string Movie::toString() const {
+        6:   74:    std::string movie = "Title: " + title + ", Genre: " + genre + ", Released: " + std::to_string(year) + ", Likes: " + std::to_string(likes) + ", Trailer: " + trailer + ";";
+        3:   74-block  0
+        3:   74-block  1
+        3:   74-block  2
+        3:   74-block  3
+        3:   74-block  4
+        3:   74-block  5
+        3:   74-block  6
+        3:   74-block  7
+        3:   74-block  8
+        3:   74-block  9
+        3:   74-block 10
+    $$$$$:   74-block 11
+    $$$$$:   74-block 12
+    $$$$$:   74-block 13
+    $$$$$:   74-block 14
+    $$$$$:   74-block 15
+    $$$$$:   74-block 16
+    $$$$$:   74-block 17
+    $$$$$:   74-block 18
+    $$$$$:   74-block 19
+    $$$$$:   74-block 20
+        3:   75:    return movie;
+        3:   75-block  0
+        -:   76:}
+        -:   77:
+        1:   78:std::ostream &operator<<(std::ostream &out, const Movie &movie) {
+        1:   79:    out << movie.toString();
+        1:   79-block  0
+        1:   79-block  1
+    $$$$$:   79-block  2
+        1:   80:    return out;
+        1:   80-block  0
+        -:   81:}

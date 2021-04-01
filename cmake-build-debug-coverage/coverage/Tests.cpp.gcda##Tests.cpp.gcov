@@ -1,0 +1,1872 @@
+        -:    0:Source:C:/Users/araul/CLionProjects/a45-araulo22/Tests.cpp
+        -:    0:Graph:C:\Users\araul\CLionProjects\a45-araulo22\cmake-build-debug-coverage\CMakeFiles\a45_araulo22.dir\Tests.cpp.gcno
+        -:    0:Data:C:\Users\araul\CLionProjects\a45-araulo22\cmake-build-debug-coverage\CMakeFiles\a45_araulo22.dir\Tests.cpp.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1://
+        -:    2:// Created by araul on 28.03.2021.
+        -:    3://
+        -:    4:#include "Tests.h"
+        -:    5:#include <iostream>
+        -:    6:#include <sstream>
+        -:    7:
+        1:    8:void Tests::runAllTests()
+        -:    9:{
+        1:   10:    runMovieTests();
+        1:   10-block  0
+        1:   11:    runDynamicArrayTests();
+        1:   12:    runRepositoryTests();
+        1:   13:    runAdminServiceTests();
+        1:   14:    runUserServiceTests();
+        1:   15:}
+        -:   16:
+        1:   17:void Tests::runMovieTests()
+        -:   18:{
+        1:   19:    Movie_AnyMovie_MovieCreated();
+        1:   19-block  0
+        1:   20:    setterGetterTitle_AnyMovie_CorrectTitle();
+        1:   21:    setterGetterGenre_AnyMovie_CorrectGenre();
+        1:   22:    setterGetterYearOfRelease_AnyMovie_CorrectYearOfRelease();
+        1:   23:    setterGetterNumberOfLikes_AnyMovie_CorrectNumberOfLikes();
+        1:   24:    setterGetterTrailer_AnyMovie_CorrectTrailer();
+        1:   25:    getOutputForm_AnyMovie_CorrectOutputForm();
+        1:   26:    operatorDifferent_AnyMovies_DifferentMovies();
+        1:   27:    operatorOstream_AnyMovies_CorrectOutput();
+        1:   28:}
+        -:   29:
+        -:   30:
+        1:   31:void Tests::runDynamicArrayTests()
+        -:   32:{
+        1:   33:    DynamicVector_AnyVector_VectorCreated();
+        1:   33-block  0
+        1:   34:    resizeElementsList_AnyVector_VectorResized();
+        1:   35:    searchElementInList_ElementInList_ReturnsTrue();
+        1:   36:    searchElementInList_ElementNotInList_ReturnsFalse();
+        1:   37:    append_ElementNotInList_ElementAppended();
+        1:   38:    append_AnyElement_ElementAppended();
+        1:   39:    remove_ElementInTheList_ElementRemoved();
+        1:   40:    remove_ElementNotInTheList_SizeRemainsTheSame();
+        1:   41:    update_ElementInTheList_ElementUpdated();
+        1:   42:    operatorPosition_ValidPosition_ElementReturned();
+        1:   43:    operatorPosition_InvalidPosition_ExceptionReturned();
+        1:   44:    size_AnyVector_CorrectSize();
+        1:   45:    operatorEqual_AnyVector_CorrectAssignment();
+        1:   46:}
+        -:   47:
+        1:   48:void Tests::runRepositoryTests()
+        -:   49:{
+        1:   50:    Repository_AnyRepository_RepositoryCreated();
+        1:   50-block  0
+        1:   51:    addMovie_MovieNotInTheList_ReturnsOne();
+        1:   52:    addMovie_MovieInTheList_ReturnsMinusOne();
+        1:   53:    deleteMovie_MovieInTheList_ReturnsOne();
+        1:   54:    deleteMovie_MovieNotInTheList_ReturnsMinusOne();
+        1:   55:    update_MovieInTheList_ReturnsOne();
+        1:   56:    update_MovieNotInTheList_ReturnsMinusOne();
+        1:   57:    getNumberOfMovies_AnyRepository_CorrectNumberOfMovies();
+        1:   58:    getMovieAtPosition_ValidPosition_ReturnsMovie();
+        1:   59:    getMovieAtPosition_InValidPosition_ReturnsException();
+        1:   60:}
+        -:   61:
+        1:   62:void Tests::runAdminServiceTests()
+        -:   63:{
+        1:   64:    AdminService_AnyAdminService_AdminServiceCreated();
+        1:   64-block  0
+        1:   65:    adminAddMovie_MovieNotInTheList_ReturnsOne();
+        1:   66:    adminAddMovie_MovieInTheList_ReturnsMinusOne();
+        1:   67:    adminDeleteMovie_MovieInTheList_ReturnsOne();
+        1:   68:    adminDeleteMovie_MovieNotInTheList_ReturnsMinusOne();
+        1:   69:    adminUpdate_MovieInTheList_ReturnsOne();
+        1:   70:    adminUpdate_MovieNotInTheList_ReturnsMinusOne();
+        1:   71:    adminGetMovieList_AnyAdminService_CorrectMovies();
+        1:   72:}
+        -:   73:
+        1:   74:void Tests::runUserServiceTests()
+        -:   75:{
+        1:   76:    UserService_AnyUserService_UserServiceCreated();
+        1:   76-block  0
+        1:   77:    userGetMovieList_AnyUserService_CorrectMovies();
+        1:   78:    userGetWatchList_AnyUserService_CorrectWatchList();
+        1:   79:    listMoviesByGenre_NoMovieWithGenre_ReturnsMinusOne();
+        1:   80:    listMoviesByGenre_ExistsMovieWithGenre_ReturnsOne();
+        1:   81:    addMovieToWatchList_ExistsMovieInWatchLists_ReturnsMinusOne();
+        1:   82:    addMovieToWatchList_MovieNotInWatchLists_ReturnsOne();
+        1:   83:    addMovieToWatchListByTitle_NoMovieInMovieLists_ReturnsMinusOne();
+        1:   84:    addMovieToWatchListByTitle_MovieInMovieLists_ReturnsOne();
+        1:   85:    getWatchListLength_AnyUserService_CorrectLength();
+        1:   86:    goToNextMovieByGenre_AnyUserService_CorrectPosition();
+        1:   87:    goToNextMovieByGenre_AnyUserService_FirstPosition();
+        1:   88:    removeWatchListMovie_AnyUserService_Liked();
+        1:   89:}
+        -:   90:
+        1:   91:void Tests::Movie_AnyMovie_MovieCreated()
+        -:   92:{
+        3:   93:    Movie movieUsed = { "Test", "CategoryTest", "TrailerTest", 123, 456 };
+        1:   93-block  0
+        1:   93-block  1
+        1:   93-block  2
+        1:   93-block  3
+        1:   93-block  4
+    $$$$$:   93-block  5
+    $$$$$:   93-block  6
+    $$$$$:   93-block  7
+    $$$$$:   93-block  8
+    $$$$$:   93-block  9
+    $$$$$:   93-block 10
+    $$$$$:   93-block 11
+       1*:   94:    assert(movieUsed.getTitle() == "Test");
+        1:   94-block  0
+    %%%%%:   94-block  1
+        1:   94-block  2
+    %%%%%:   94-block  3
+       1*:   95:    assert(movieUsed.getGenre() == "CategoryTest");
+        1:   95-block  0
+        1:   95-block  1
+    %%%%%:   95-block  2
+        1:   95-block  3
+    %%%%%:   95-block  4
+       1*:   96:    assert(movieUsed.getYear() == 123);
+        1:   96-block  0
+        1:   96-block  1
+    %%%%%:   96-block  2
+        1:   96-block  3
+    %%%%%:   96-block  4
+       1*:   97:    assert(movieUsed.getLikes() == 456);
+        1:   97-block  0
+        1:   97-block  1
+    %%%%%:   97-block  2
+        1:   97-block  3
+    %%%%%:   97-block  4
+       1*:   98:    assert(movieUsed.getTrailer() == "TrailerTest");
+        1:   98-block  0
+        1:   98-block  1
+    %%%%%:   98-block  2
+        1:   98-block  3
+    %%%%%:   98-block  4
+        1:   99:}
+        -:  100:
+        1:  101:void Tests::setterGetterTitle_AnyMovie_CorrectTitle(){
+        3:  102:    Movie movieUsed = { "Test", "CategoryTest", "TrailerTest", 123, 456 };
+        1:  102-block  0
+        1:  102-block  1
+        1:  102-block  2
+        1:  102-block  3
+        1:  102-block  4
+    $$$$$:  102-block  5
+    $$$$$:  102-block  6
+    $$$$$:  102-block  7
+    $$$$$:  102-block  8
+    $$$$$:  102-block  9
+    $$$$$:  102-block 10
+    $$$$$:  102-block 11
+        1:  103:    movieUsed.setTitle("Test2");
+        1:  103-block  0
+        1:  103-block  1
+    $$$$$:  103-block  2
+    $$$$$:  103-block  3
+    $$$$$:  103-block  4
+    $$$$$:  103-block  5
+       1*:  104:    assert(movieUsed.getTitle() == "Test2");
+        1:  104-block  0
+    %%%%%:  104-block  1
+        1:  104-block  2
+    %%%%%:  104-block  3
+        1:  105:}
+        1:  106:void Tests::setterGetterGenre_AnyMovie_CorrectGenre(){
+        3:  107:    Movie movieUsed = { "Test", "CategoryTest", "TrailerTest", 123, 456 };
+        1:  107-block  0
+        1:  107-block  1
+        1:  107-block  2
+        1:  107-block  3
+        1:  107-block  4
+    $$$$$:  107-block  5
+    $$$$$:  107-block  6
+    $$$$$:  107-block  7
+    $$$$$:  107-block  8
+    $$$$$:  107-block  9
+    $$$$$:  107-block 10
+    $$$$$:  107-block 11
+        1:  108:    movieUsed.setGenre("Test2");
+        1:  108-block  0
+        1:  108-block  1
+    $$$$$:  108-block  2
+    $$$$$:  108-block  3
+    $$$$$:  108-block  4
+    $$$$$:  108-block  5
+       1*:  109:    assert(movieUsed.getGenre() == "Test2");
+        1:  109-block  0
+    %%%%%:  109-block  1
+        1:  109-block  2
+    %%%%%:  109-block  3
+        1:  110:}
+        1:  111:void Tests::setterGetterYearOfRelease_AnyMovie_CorrectYearOfRelease(){
+        3:  112:    Movie movieUsed = { "Test", "CategoryTest", "TrailerTest", 123, 456 };
+        1:  112-block  0
+        1:  112-block  1
+        1:  112-block  2
+        1:  112-block  3
+        1:  112-block  4
+    $$$$$:  112-block  5
+    $$$$$:  112-block  6
+    $$$$$:  112-block  7
+    $$$$$:  112-block  8
+    $$$$$:  112-block  9
+    $$$$$:  112-block 10
+    $$$$$:  112-block 11
+        1:  113:    movieUsed.setYear(2005);
+       1*:  114:    assert(movieUsed.getYear() == 2005);
+        1:  114-block  0
+        1:  114-block  1
+    %%%%%:  114-block  2
+        1:  114-block  3
+    %%%%%:  114-block  4
+        1:  115:}
+        1:  116:void Tests::setterGetterNumberOfLikes_AnyMovie_CorrectNumberOfLikes(){
+        3:  117:    Movie movieUsed = { "Test", "CategoryTest", "TrailerTest", 123, 456 };
+        1:  117-block  0
+        1:  117-block  1
+        1:  117-block  2
+        1:  117-block  3
+        1:  117-block  4
+    $$$$$:  117-block  5
+    $$$$$:  117-block  6
+    $$$$$:  117-block  7
+    $$$$$:  117-block  8
+    $$$$$:  117-block  9
+    $$$$$:  117-block 10
+    $$$$$:  117-block 11
+        1:  118:    movieUsed.setLikes(2005);
+       1*:  119:    assert(movieUsed.getLikes() == 2005);
+        1:  119-block  0
+        1:  119-block  1
+    %%%%%:  119-block  2
+        1:  119-block  3
+    %%%%%:  119-block  4
+        1:  120:}
+        1:  121:void Tests::setterGetterTrailer_AnyMovie_CorrectTrailer(){
+        3:  122:    Movie movieUsed = { "Test", "CategoryTest", "TrailerTest", 123, 456 };
+        1:  122-block  0
+        1:  122-block  1
+        1:  122-block  2
+        1:  122-block  3
+        1:  122-block  4
+    $$$$$:  122-block  5
+    $$$$$:  122-block  6
+    $$$$$:  122-block  7
+    $$$$$:  122-block  8
+    $$$$$:  122-block  9
+    $$$$$:  122-block 10
+    $$$$$:  122-block 11
+        1:  123:    movieUsed.setTrailer("Test2");
+        1:  123-block  0
+        1:  123-block  1
+    $$$$$:  123-block  2
+    $$$$$:  123-block  3
+    $$$$$:  123-block  4
+    $$$$$:  123-block  5
+       1*:  124:    assert(movieUsed.getTrailer() == "Test2");
+        1:  124-block  0
+    %%%%%:  124-block  1
+        1:  124-block  2
+    %%%%%:  124-block  3
+        1:  125:}
+        -:  126:
+        1:  127:void Tests::getOutputForm_AnyMovie_CorrectOutputForm(){
+        3:  128:    Movie movieUsed = { "Test", "CategoryTest", "TrailerTest", 123, 456 };
+        1:  128-block  0
+        1:  128-block  1
+        1:  128-block  2
+        1:  128-block  3
+    $$$$$:  128-block  4
+    $$$$$:  128-block  5
+    $$$$$:  128-block  6
+    $$$$$:  128-block  7
+    $$$$$:  128-block  8
+    $$$$$:  128-block  9
+    $$$$$:  128-block 10
+        2:  129:    std::string stringUsed = movieUsed.toString();
+        1:  129-block  0
+    $$$$$:  129-block  1
+       1*:  130:    assert(stringUsed == "Title: Test, Genre: CategoryTest, Released: 123, Likes: 456, Trailer: TrailerTest;");
+        1:  130-block  0
+    %%%%%:  130-block  1
+        1:  130-block  2
+    %%%%%:  130-block  3
+        1:  131:}
+        -:  132:
+        1:  133:void Tests::operatorDifferent_AnyMovies_DifferentMovies(){
+        3:  134:    Movie movieUsed = { "Test", "CategoryTest", "TrailerTest", 123, 456 };
+        1:  134-block  0
+        1:  134-block  1
+        1:  134-block  2
+        1:  134-block  3
+    $$$$$:  134-block  4
+    $$$$$:  134-block  5
+    $$$$$:  134-block  6
+    $$$$$:  134-block  7
+    $$$$$:  134-block  8
+    $$$$$:  134-block  9
+    $$$$$:  134-block 10
+        3:  135:    Movie movieUsed2 = { "Test2", "CategoryTest", "TrailerTest", 123, 456 };
+        1:  135-block  0
+        1:  135-block  1
+        1:  135-block  2
+        1:  135-block  3
+    $$$$$:  135-block  4
+    $$$$$:  135-block  5
+    $$$$$:  135-block  6
+    $$$$$:  135-block  7
+    $$$$$:  135-block  8
+    $$$$$:  135-block  9
+    $$$$$:  135-block 10
+       1*:  136:    assert(movieUsed != movieUsed2);
+        1:  136-block  0
+    %%%%%:  136-block  1
+        1:  136-block  2
+    %%%%%:  136-block  3
+        1:  137:}
+        -:  138:
+        1:  139:void Tests::operatorOstream_AnyMovies_CorrectOutput() {
+        2:  140:    std::stringstream out;
+        1:  140-block  0
+    $$$$$:  140-block  1
+        2:  141:    Movie movieUsed = { "Test", "CategoryTest", "TrailerTest", 123, 456 };
+        1:  141-block  0
+        1:  141-block  1
+        1:  141-block  2
+        1:  141-block  3
+    $$$$$:  141-block  4
+    $$$$$:  141-block  5
+    $$$$$:  141-block  6
+    $$$$$:  141-block  7
+    $$$$$:  141-block  8
+    $$$$$:  141-block  9
+    $$$$$:  141-block 10
+        1:  142:    out << movieUsed;
+       1*:  143:    assert(out.str() == movieUsed.toString());
+        1:  143-block  0
+        1:  143-block  1
+        1:  143-block  2
+    %%%%%:  143-block  3
+        1:  143-block  4
+    %%%%%:  143-block  5
+        1:  143-block  6
+        1:  143-block  7
+        1:  143-block  8
+        1:  143-block  9
+        1:  143-block 10
+    $$$$$:  143-block 11
+    $$$$$:  143-block 12
+    $$$$$:  143-block 13
+    $$$$$:  143-block 14
+    $$$$$:  143-block 15
+    $$$$$:  143-block 16
+        1:  144:}
+        -:  145:
+        1:  146:void Tests::DynamicVector_AnyVector_VectorCreated()
+        -:  147:{
+        2:  148:    DynamicVector<int> vectorUsed{ 5 };
+        1:  148-block  0
+        1:  148-block  1
+    $$$$$:  148-block  2
+       1*:  149:    assert(vectorUsed.capacity() == 5);
+        1:  149-block  0
+    %%%%%:  149-block  1
+        1:  149-block  2
+    %%%%%:  149-block  3
+        -:  150:
+        1:  151:}
+        -:  152:
+        1:  153:void Tests::resizeElementsList_AnyVector_VectorResized()
+        -:  154:{
+        2:  155:    DynamicVector<int> vectorUsed{ 2 };
+        1:  155-block  0
+        1:  155-block  1
+    $$$$$:  155-block  2
+        1:  156:    vectorUsed.append(1);
+        1:  156-block  0
+        1:  157:    vectorUsed.append(2);
+        1:  157-block  0
+        1:  158:    vectorUsed.append(3);
+        1:  158-block  0
+       1*:  159:    assert(vectorUsed.capacity() == 4);
+        1:  159-block  0
+    %%%%%:  159-block  1
+        1:  159-block  2
+    %%%%%:  159-block  3
+        1:  160:}
+        -:  161:
+        1:  162:void Tests::searchElementInList_ElementInList_ReturnsTrue()
+        -:  163:{
+        1:  164:    DynamicVector<int> vectorUsed{ 2 };
+        1:  164-block  0
+    $$$$$:  164-block  1
+        1:  165:    int firstElementToAdd = 1, secondElementToAdd = 5;
+        1:  166:    vectorUsed.append(firstElementToAdd);
+        1:  166-block  0
+        1:  167:    vectorUsed.append(secondElementToAdd);
+        1:  167-block  0
+       1*:  168:    assert(vectorUsed.searchElementInList(5) == 1);
+        1:  168-block  0
+    %%%%%:  168-block  1
+        1:  168-block  2
+    %%%%%:  168-block  3
+        1:  168-block  4
+    $$$$$:  168-block  5
+        1:  169:}
+        -:  170:
+        1:  171:void Tests::searchElementInList_ElementNotInList_ReturnsFalse()
+        -:  172:{
+        1:  173:    DynamicVector<int> vectorUsed{ 2 };
+        1:  173-block  0
+    $$$$$:  173-block  1
+        1:  174:    int firstElementToAdd = 1, secondElementToAdd = 4;
+        1:  175:    vectorUsed.append(firstElementToAdd);
+        1:  175-block  0
+        1:  176:    vectorUsed.append(secondElementToAdd);
+        1:  176-block  0
+       1*:  177:    assert(vectorUsed.searchElementInList(5) == -1);
+        1:  177-block  0
+    %%%%%:  177-block  1
+        1:  177-block  2
+    %%%%%:  177-block  3
+        1:  177-block  4
+    $$$$$:  177-block  5
+        1:  178:}
+        -:  179:
+        1:  180:void Tests::append_ElementNotInList_ElementAppended()
+        -:  181:{
+        1:  182:    DynamicVector<int> vectorUsed{ 2 };
+        1:  182-block  0
+    $$$$$:  182-block  1
+        1:  183:    int firstElementToAdd = 1, secondElementToAdd = 5;
+        1:  184:    vectorUsed.append(firstElementToAdd);
+        1:  184-block  0
+        1:  185:    vectorUsed.append(secondElementToAdd);
+        1:  185-block  0
+       1*:  186:    assert(vectorUsed.searchElementInList(5) == 1);
+        1:  186-block  0
+    %%%%%:  186-block  1
+        1:  186-block  2
+    %%%%%:  186-block  3
+        1:  186-block  4
+    $$$$$:  186-block  5
+        1:  187:}
+        -:  188:
+        1:  189:void Tests::append_AnyElement_ElementAppended()
+        -:  190:{
+        2:  191:    DynamicVector<int> vectorUsed{ 2 };
+        1:  191-block  0
+        1:  191-block  1
+    $$$$$:  191-block  2
+        1:  192:    vectorUsed.append(1);
+        1:  192-block  0
+        1:  193:    vectorUsed.append(1);
+        1:  193-block  0
+       1*:  194:    assert(vectorUsed.size() == 2);
+        1:  194-block  0
+    %%%%%:  194-block  1
+        1:  194-block  2
+    %%%%%:  194-block  3
+        1:  195:}
+        -:  196:
+        1:  197:void Tests::remove_ElementInTheList_ElementRemoved()
+        -:  198:{
+        1:  199:    DynamicVector<int> vectorUsed{ 2 };
+        1:  199-block  0
+    $$$$$:  199-block  1
+        1:  200:    vectorUsed.append(1);
+        1:  200-block  0
+        1:  201:    vectorUsed.append(2);
+        1:  201-block  0
+        1:  202:    vectorUsed.append(3);
+        1:  202-block  0
+        1:  203:    vectorUsed.remove(1);
+        1:  203-block  0
+       1*:  204:    assert(vectorUsed.searchElementInList(1) == -1);
+    %%%%%:  204-block  0
+        1:  204-block  1
+    %%%%%:  204-block  2
+        1:  204-block  3
+    $$$$$:  204-block  4
+        -:  205:
+        1:  206:}
+        -:  207:
+        1:  208:void Tests::remove_ElementNotInTheList_SizeRemainsTheSame()
+        -:  209:{
+        2:  210:    DynamicVector<int> vectorUsed{ 2 };
+        1:  210-block  0
+        1:  210-block  1
+    $$$$$:  210-block  2
+        1:  211:    vectorUsed.append(1);
+        1:  211-block  0
+        1:  212:    vectorUsed.remove(2);
+        1:  212-block  0
+       1*:  213:    assert(vectorUsed.size() == 1);
+    %%%%%:  213-block  0
+        1:  213-block  1
+    %%%%%:  213-block  2
+        1:  214:}
+        -:  215:
+        1:  216:void Tests::update_ElementInTheList_ElementUpdated()
+        -:  217:{
+        1:  218:    DynamicVector<int> vectorUsed{ 2 };
+        1:  218-block  0
+    $$$$$:  218-block  1
+        1:  219:    vectorUsed.append(1);
+        1:  219-block  0
+        1:  220:    vectorUsed.update(1, 2);
+        1:  220-block  0
+       1*:  221:    assert(vectorUsed.searchElementInList(1) == -1);
+    %%%%%:  221-block  0
+        1:  221-block  1
+    %%%%%:  221-block  2
+    $$$$$:  221-block  3
+       1*:  222:    assert(vectorUsed.searchElementInList(2) == 0);
+        1:  222-block  0
+    %%%%%:  222-block  1
+        1:  222-block  2
+    %%%%%:  222-block  3
+        1:  222-block  4
+    $$$$$:  222-block  5
+        1:  223:}
+        -:  224:
+        1:  225:void Tests::operatorPosition_ValidPosition_ElementReturned()
+        -:  226:{
+        2:  227:    DynamicVector<int> vectorUsed{ 2 };
+        1:  227-block  0
+        1:  227-block  1
+    $$$$$:  227-block  2
+        1:  228:    vectorUsed.append(5);
+        1:  228-block  0
+       1*:  229:    assert(vectorUsed[0] == 5);
+        1:  229-block  0
+        1:  229-block  1
+    %%%%%:  229-block  2
+        1:  229-block  3
+    %%%%%:  229-block  4
+        1:  230:}
+        -:  231:
+        1:  232:void Tests::operatorPosition_InvalidPosition_ExceptionReturned()
+        -:  233:{
+        2:  234:    DynamicVector<int> vectorUsed{ 2 };
+        1:  234-block  0
+        1:  234-block  1
+    $$$$$:  234-block  2
+        1:  235:    vectorUsed.append(5);
+        1:  235-block  0
+        -:  236:    try {
+       1*:  237:        int x = vectorUsed[1];
+        1:  237-block  0
+    %%%%%:  237-block  1
+        -:  238:    }
+        1:  239:    catch(std::exception Exception){
+        1:  239-block  0
+        -:  240:        assert(true);
+        -:  241:    }
+        1:  242:}
+        -:  243:
+        1:  244:void Tests::size_AnyVector_CorrectSize()
+        -:  245:{
+        2:  246:    DynamicVector<int> vectorUsed{ 2 };
+        1:  246-block  0
+        1:  246-block  1
+    $$$$$:  246-block  2
+        1:  247:    vectorUsed.append(1);
+        1:  247-block  0
+        1:  248:    vectorUsed.append(2);
+        1:  248-block  0
+       1*:  249:    assert(vectorUsed.size() == 2);
+        1:  249-block  0
+    %%%%%:  249-block  1
+        1:  249-block  2
+    %%%%%:  249-block  3
+        1:  250:}
+        -:  251:
+        1:  252:void Tests::operatorEqual_AnyVector_CorrectAssignment()
+        -:  253:{
+        2:  254:    DynamicVector<int> firstVectorUsed{ 2 };
+        1:  254-block  0
+    $$$$$:  254-block  1
+        1:  255:    firstVectorUsed.append(1);
+        1:  255-block  0
+        1:  256:    firstVectorUsed.append(2);
+        1:  256-block  0
+        1:  257:    DynamicVector<int> secondVectorUsed{ 1 };
+        1:  257-block  0
+    $$$$$:  257-block  1
+        1:  258:    secondVectorUsed = firstVectorUsed;
+        1:  258-block  0
+       1*:  259:    assert(secondVectorUsed.searchElementInList(2) == 1);
+        1:  259-block  0
+    %%%%%:  259-block  1
+        1:  259-block  2
+    %%%%%:  259-block  3
+        1:  259-block  4
+    $$$$$:  259-block  5
+        1:  260:}
+        -:  261:
+        1:  262:void Tests::Repository_AnyRepository_RepositoryCreated()
+        -:  263:{
+        1:  264:    Repository repositoryUsed{};
+        1:  264-block  0
+        1:  264-block  1
+        1:  265:}
+        -:  266:
+        -:  267:
+        1:  268:void Tests::addMovie_MovieNotInTheList_ReturnsOne()
+        -:  269:{
+        1:  270:    Repository* repositoryUsed = new Repository();
+        1:  270-block  0
+        1:  270-block  1
+    $$$$$:  270-block  2
+        3:  271:    Movie movieUsed = { "Test", "CategoryTest", "TrailerTest", 123, 456 };
+        1:  271-block  0
+        1:  271-block  1
+        1:  271-block  2
+        1:  271-block  3
+        1:  271-block  4
+    $$$$$:  271-block  5
+    $$$$$:  271-block  6
+    $$$$$:  271-block  7
+    $$$$$:  271-block  8
+    $$$$$:  271-block  9
+    $$$$$:  271-block 10
+    $$$$$:  271-block 11
+       1*:  272:    assert(repositoryUsed->addMovie(movieUsed) == 1);
+        1:  272-block  0
+    %%%%%:  272-block  1
+        1:  272-block  2
+    %%%%%:  272-block  3
+        1:  273:}
+        -:  274:
+        1:  275:void Tests::addMovie_MovieInTheList_ReturnsMinusOne()
+        -:  276:{
+        1:  277:    Repository* repositoryUsed = new Repository();
+        1:  277-block  0
+        1:  277-block  1
+    $$$$$:  277-block  2
+        3:  278:    Movie movieUsed = { "Test", "CategoryTest", "TrailerTest", 123, 456 };
+        1:  278-block  0
+        1:  278-block  1
+        1:  278-block  2
+        1:  278-block  3
+        1:  278-block  4
+    $$$$$:  278-block  5
+    $$$$$:  278-block  6
+    $$$$$:  278-block  7
+    $$$$$:  278-block  8
+    $$$$$:  278-block  9
+    $$$$$:  278-block 10
+    $$$$$:  278-block 11
+        1:  279:    repositoryUsed->addMovie(movieUsed);
+       1*:  280:    assert(repositoryUsed->addMovie(movieUsed) == -1);
+        1:  280-block  0
+        1:  280-block  1
+    %%%%%:  280-block  2
+        1:  280-block  3
+    %%%%%:  280-block  4
+        1:  281:}
+        -:  282:
+        1:  283:void Tests::deleteMovie_MovieInTheList_ReturnsOne()
+        -:  284:{
+        1:  285:    Repository* repositoryUsed = new Repository();
+        1:  285-block  0
+        1:  285-block  1
+    $$$$$:  285-block  2
+        3:  286:    Movie movieUsed = { "Test", "CategoryTest", "TrailerTest", 123, 456 };
+        1:  286-block  0
+        1:  286-block  1
+        1:  286-block  2
+        1:  286-block  3
+        1:  286-block  4
+    $$$$$:  286-block  5
+    $$$$$:  286-block  6
+    $$$$$:  286-block  7
+    $$$$$:  286-block  8
+    $$$$$:  286-block  9
+    $$$$$:  286-block 10
+    $$$$$:  286-block 11
+        1:  287:    repositoryUsed->addMovie(movieUsed);
+       1*:  288:    assert(repositoryUsed->deleteMovie(movieUsed) == 1);
+        1:  288-block  0
+        1:  288-block  1
+    %%%%%:  288-block  2
+        1:  288-block  3
+    %%%%%:  288-block  4
+        1:  289:}
+        -:  290:
+        1:  291:void Tests::deleteMovie_MovieNotInTheList_ReturnsMinusOne()
+        -:  292:{
+        1:  293:    Repository* repositoryUsed = new Repository();
+        1:  293-block  0
+        1:  293-block  1
+    $$$$$:  293-block  2
+        3:  294:    Movie movieUsed = { "Test", "CategoryTest", "TrailerTest", 123, 456 };
+        1:  294-block  0
+        1:  294-block  1
+        1:  294-block  2
+        1:  294-block  3
+        1:  294-block  4
+    $$$$$:  294-block  5
+    $$$$$:  294-block  6
+    $$$$$:  294-block  7
+    $$$$$:  294-block  8
+    $$$$$:  294-block  9
+    $$$$$:  294-block 10
+    $$$$$:  294-block 11
+       1*:  295:    assert(repositoryUsed->deleteMovie(movieUsed) == -1);
+        1:  295-block  0
+    %%%%%:  295-block  1
+        1:  295-block  2
+    %%%%%:  295-block  3
+        1:  296:}
+        -:  297:
+        1:  298:void Tests::update_MovieInTheList_ReturnsOne()
+        -:  299:{
+        1:  300:    Repository* repositoryUsed = new Repository();
+        1:  300-block  0
+        1:  300-block  1
+    $$$$$:  300-block  2
+        3:  301:    Movie movieUsed = { "Test", "CategoryTest", "TrailerTest", 123, 456 };
+        1:  301-block  0
+        1:  301-block  1
+        1:  301-block  2
+        1:  301-block  3
+        1:  301-block  4
+    $$$$$:  301-block  5
+    $$$$$:  301-block  6
+    $$$$$:  301-block  7
+    $$$$$:  301-block  8
+    $$$$$:  301-block  9
+    $$$$$:  301-block 10
+    $$$$$:  301-block 11
+        1:  302:    repositoryUsed->addMovie(movieUsed);
+       1*:  303:    assert(repositoryUsed->updateMovie(movieUsed) == 1);
+        1:  303-block  0
+        1:  303-block  1
+    %%%%%:  303-block  2
+        1:  303-block  3
+    %%%%%:  303-block  4
+        1:  304:}
+        -:  305:
+        1:  306:void Tests::update_MovieNotInTheList_ReturnsMinusOne()
+        -:  307:{
+        1:  308:    Repository* repositoryUsed = new Repository();
+        1:  308-block  0
+        1:  308-block  1
+    $$$$$:  308-block  2
+        3:  309:    Movie movieUsed = { "Test", "CategoryTest", "TrailerTest", 123, 456 };
+        1:  309-block  0
+        1:  309-block  1
+        1:  309-block  2
+        1:  309-block  3
+        1:  309-block  4
+    $$$$$:  309-block  5
+    $$$$$:  309-block  6
+    $$$$$:  309-block  7
+    $$$$$:  309-block  8
+    $$$$$:  309-block  9
+    $$$$$:  309-block 10
+    $$$$$:  309-block 11
+       1*:  310:    assert(repositoryUsed->updateMovie(movieUsed) == -1);
+        1:  310-block  0
+    %%%%%:  310-block  1
+        1:  310-block  2
+    %%%%%:  310-block  3
+        1:  311:}
+        -:  312:
+        1:  313:void Tests::getMovieAtPosition_ValidPosition_ReturnsMovie()
+        -:  314:{
+        1:  315:    Repository* repositoryUsed = new Repository();
+        1:  315-block  0
+        1:  315-block  1
+    $$$$$:  315-block  2
+        2:  316:    Movie movieUsed = { "Test", "CategoryTest", "TrailerTest", 123, 456 };
+        1:  316-block  0
+        1:  316-block  1
+        1:  316-block  2
+        1:  316-block  3
+    $$$$$:  316-block  4
+    $$$$$:  316-block  5
+    $$$$$:  316-block  6
+    $$$$$:  316-block  7
+    $$$$$:  316-block  8
+    $$$$$:  316-block  9
+    $$$$$:  316-block 10
+        1:  317:    repositoryUsed->addMovie(movieUsed);
+       1*:  318:    assert(repositoryUsed->getMovieAtPosition(0) == movieUsed);
+        1:  318-block  0
+        1:  318-block  1
+        1:  318-block  2
+    %%%%%:  318-block  3
+        1:  318-block  4
+    %%%%%:  318-block  5
+        1:  318-block  6
+        1:  318-block  7
+        1:  318-block  8
+    $$$$$:  318-block  9
+    $$$$$:  318-block 10
+    $$$$$:  318-block 11
+        1:  319:}
+        -:  320:
+        1:  321:void Tests::getMovieAtPosition_InValidPosition_ReturnsException()
+        -:  322:{
+        1:  323:    Repository* repositoryUsed = new Repository();
+        1:  323-block  0
+        1:  323-block  1
+    $$$$$:  323-block  2
+        3:  324:    Movie movieUsed = { "Test", "CategoryTest", "TrailerTest", 123, 456 };
+        1:  324-block  0
+        1:  324-block  1
+        1:  324-block  2
+        1:  324-block  3
+        1:  324-block  4
+    $$$$$:  324-block  5
+    $$$$$:  324-block  6
+    $$$$$:  324-block  7
+    $$$$$:  324-block  8
+    $$$$$:  324-block  9
+    $$$$$:  324-block 10
+    $$$$$:  324-block 11
+        1:  325:    repositoryUsed->addMovie(movieUsed);
+        -:  326:    try {
+       1*:  327:        Movie movieUsed = repositoryUsed->getMovieAtPosition(-1);
+        1:  327-block  0
+    %%%%%:  327-block  1
+        -:  328:    }
+        1:  329:    catch (std::exception Exception) {
+        1:  329-block  0
+        -:  330:        assert(true);
+        -:  331:    }
+        1:  332:}
+        -:  333:
+        1:  334:void Tests::getNumberOfMovies_AnyRepository_CorrectNumberOfMovies()
+        -:  335:{
+        1:  336:    Repository* repositoryUsed = new Repository();
+        1:  336-block  0
+        1:  336-block  1
+    $$$$$:  336-block  2
+        3:  337:    Movie movieUsed = { "Test", "CategoryTest", "TrailerTest", 123, 456 };
+        1:  337-block  0
+        1:  337-block  1
+        1:  337-block  2
+        1:  337-block  3
+        1:  337-block  4
+    $$$$$:  337-block  5
+    $$$$$:  337-block  6
+    $$$$$:  337-block  7
+    $$$$$:  337-block  8
+    $$$$$:  337-block  9
+    $$$$$:  337-block 10
+    $$$$$:  337-block 11
+        1:  338:    repositoryUsed->addMovie(movieUsed);
+       1*:  339:    assert(repositoryUsed->getNumberOfMovies() == 1);
+        1:  339-block  0
+        1:  339-block  1
+    %%%%%:  339-block  2
+        1:  339-block  3
+    %%%%%:  339-block  4
+        1:  340:}
+        -:  341:
+        1:  342:void Tests::AdminService_AnyAdminService_AdminServiceCreated()
+        -:  343:{
+        1:  344:    Repository* repositoryUsed = new Repository();
+        1:  344-block  0
+        1:  344-block  1
+    $$$$$:  344-block  2
+        1:  345:    AdminService adminServiceUsed = {*repositoryUsed};
+        1:  345-block  0
+        1:  346:}
+        1:  346-block  0
+        -:  347:
+        1:  348:void Tests::adminAddMovie_MovieNotInTheList_ReturnsOne()
+        -:  349:{
+        1:  350:    Repository* repositoryUsed = new Repository();
+        1:  350-block  0
+        1:  350-block  1
+    $$$$$:  350-block  2
+        1:  351:    AdminService adminServiceUsed = { *repositoryUsed };
+        1:  351-block  0
+       1*:  352:    assert(adminServiceUsed.adminAddMovie("Test", "CategoryTest", 123, 456, "TrailerTest") == 1);
+        1:  352-block  0
+        1:  352-block  1
+        1:  352-block  2
+        1:  352-block  3
+        1:  352-block  4
+    %%%%%:  352-block  5
+        1:  352-block  6
+    %%%%%:  352-block  7
+        1:  352-block  8
+        1:  352-block  9
+        1:  352-block 10
+        1:  352-block 11
+        1:  352-block 12
+        1:  352-block 13
+        1:  352-block 14
+        1:  352-block 15
+        1:  352-block 16
+        1:  352-block 17
+        1:  352-block 18
+        1:  352-block 19
+    $$$$$:  352-block 20
+    $$$$$:  352-block 21
+    $$$$$:  352-block 22
+    $$$$$:  352-block 23
+    $$$$$:  352-block 24
+    $$$$$:  352-block 25
+    $$$$$:  352-block 26
+    $$$$$:  352-block 27
+    $$$$$:  352-block 28
+    $$$$$:  352-block 29
+    $$$$$:  352-block 30
+    $$$$$:  352-block 31
+    $$$$$:  352-block 32
+    $$$$$:  352-block 33
+    $$$$$:  352-block 34
+    $$$$$:  352-block 35
+    $$$$$:  352-block 36
+    $$$$$:  352-block 37
+        1:  353:}
+        1:  353-block  0
+        -:  354:
+        1:  355:void Tests::adminAddMovie_MovieInTheList_ReturnsMinusOne()
+        -:  356:{
+        1:  357:    Repository* repositoryUsed = new Repository();
+        1:  357-block  0
+        1:  357-block  1
+    $$$$$:  357-block  2
+        1:  358:    AdminService adminServiceUsed = {*repositoryUsed};
+        1:  358-block  0
+        1:  359:    adminServiceUsed.adminAddMovie("Test", "CategoryTest", 123, 456, "TrailerTest");
+        1:  359-block  0
+        1:  359-block  1
+        1:  359-block  2
+        1:  359-block  3
+        1:  359-block  4
+    $$$$$:  359-block  5
+    $$$$$:  359-block  6
+    $$$$$:  359-block  7
+    $$$$$:  359-block  8
+    $$$$$:  359-block  9
+    $$$$$:  359-block 10
+    $$$$$:  359-block 11
+    $$$$$:  359-block 12
+    $$$$$:  359-block 13
+    $$$$$:  359-block 14
+    $$$$$:  359-block 15
+    $$$$$:  359-block 16
+       1*:  360:    assert(adminServiceUsed.adminAddMovie("Test", "CategoryTest", 123, 456, "TrailerTest") == -1);
+        1:  360-block  0
+        1:  360-block  1
+        1:  360-block  2
+        1:  360-block  3
+    %%%%%:  360-block  4
+        1:  360-block  5
+    %%%%%:  360-block  6
+        1:  360-block  7
+        1:  360-block  8
+        1:  360-block  9
+        1:  360-block 10
+        1:  360-block 11
+        1:  360-block 12
+        1:  360-block 13
+        1:  360-block 14
+        1:  360-block 15
+        1:  360-block 16
+        1:  360-block 17
+        1:  360-block 18
+    $$$$$:  360-block 19
+    $$$$$:  360-block 20
+    $$$$$:  360-block 21
+    $$$$$:  360-block 22
+    $$$$$:  360-block 23
+    $$$$$:  360-block 24
+    $$$$$:  360-block 25
+    $$$$$:  360-block 26
+    $$$$$:  360-block 27
+    $$$$$:  360-block 28
+    $$$$$:  360-block 29
+    $$$$$:  360-block 30
+    $$$$$:  360-block 31
+    $$$$$:  360-block 32
+    $$$$$:  360-block 33
+    $$$$$:  360-block 34
+    $$$$$:  360-block 35
+    $$$$$:  360-block 36
+        1:  361:}
+        1:  361-block  0
+        -:  362:
+        1:  363:void Tests::adminDeleteMovie_MovieInTheList_ReturnsOne()
+        -:  364:{
+        1:  365:    Repository* repositoryUsed = new Repository();
+        1:  365-block  0
+        1:  365-block  1
+    $$$$$:  365-block  2
+        1:  366:    AdminService adminServiceUsed = {*repositoryUsed};
+        1:  366-block  0
+        1:  367:    adminServiceUsed.adminAddMovie("Test", "CategoryTest", 123, 456, "TrailerTest");
+        1:  367-block  0
+        1:  367-block  1
+        1:  367-block  2
+        1:  367-block  3
+        1:  367-block  4
+    $$$$$:  367-block  5
+    $$$$$:  367-block  6
+    $$$$$:  367-block  7
+    $$$$$:  367-block  8
+    $$$$$:  367-block  9
+    $$$$$:  367-block 10
+    $$$$$:  367-block 11
+    $$$$$:  367-block 12
+    $$$$$:  367-block 13
+    $$$$$:  367-block 14
+    $$$$$:  367-block 15
+    $$$$$:  367-block 16
+       1*:  368:    assert(adminServiceUsed.adminDeleteMovie("Test") == 1);
+        1:  368-block  0
+        1:  368-block  1
+    %%%%%:  368-block  2
+        1:  368-block  3
+    %%%%%:  368-block  4
+        1:  368-block  5
+        1:  368-block  6
+        1:  368-block  7
+        1:  368-block  8
+    $$$$$:  368-block  9
+    $$$$$:  368-block 10
+    $$$$$:  368-block 11
+    $$$$$:  368-block 12
+    $$$$$:  368-block 13
+    $$$$$:  368-block 14
+        1:  369:}
+        1:  369-block  0
+        -:  370:
+        1:  371:void Tests::adminDeleteMovie_MovieNotInTheList_ReturnsMinusOne()
+        -:  372:{
+        1:  373:    Repository* repositoryUsed = new Repository();
+        1:  373-block  0
+        1:  373-block  1
+    $$$$$:  373-block  2
+        1:  374:    AdminService adminServiceUsed = {*repositoryUsed};
+        1:  374-block  0
+       1*:  375:    assert(adminServiceUsed.adminDeleteMovie("Test") == -1);
+        1:  375-block  0
+        1:  375-block  1
+        1:  375-block  2
+    %%%%%:  375-block  3
+        1:  375-block  4
+    %%%%%:  375-block  5
+        1:  375-block  6
+        1:  375-block  7
+        1:  375-block  8
+        1:  375-block  9
+    $$$$$:  375-block 10
+    $$$$$:  375-block 11
+    $$$$$:  375-block 12
+    $$$$$:  375-block 13
+    $$$$$:  375-block 14
+    $$$$$:  375-block 15
+        1:  376:}
+        1:  376-block  0
+        -:  377:
+        1:  378:void Tests::adminUpdate_MovieInTheList_ReturnsOne()
+        -:  379:{
+        1:  380:    Repository* repositoryUsed = new Repository();
+        1:  380-block  0
+        1:  380-block  1
+    $$$$$:  380-block  2
+        1:  381:    AdminService adminServiceUsed = {*repositoryUsed};
+        1:  381-block  0
+        1:  382:    adminServiceUsed.adminAddMovie("Test", "CategoryTest", 123, 456, "TrailerTest");
+        1:  382-block  0
+        1:  382-block  1
+        1:  382-block  2
+        1:  382-block  3
+        1:  382-block  4
+    $$$$$:  382-block  5
+    $$$$$:  382-block  6
+    $$$$$:  382-block  7
+    $$$$$:  382-block  8
+    $$$$$:  382-block  9
+    $$$$$:  382-block 10
+    $$$$$:  382-block 11
+    $$$$$:  382-block 12
+    $$$$$:  382-block 13
+    $$$$$:  382-block 14
+    $$$$$:  382-block 15
+    $$$$$:  382-block 16
+       1*:  383:    assert(adminServiceUsed.adminUpdateMovie("Test", "CategoryTest", 123, 456, "TrailerTest") == 1);
+        1:  383-block  0
+        1:  383-block  1
+        1:  383-block  2
+        1:  383-block  3
+    %%%%%:  383-block  4
+        1:  383-block  5
+    %%%%%:  383-block  6
+        1:  383-block  7
+        1:  383-block  8
+        1:  383-block  9
+        1:  383-block 10
+        1:  383-block 11
+        1:  383-block 12
+        1:  383-block 13
+        1:  383-block 14
+        1:  383-block 15
+        1:  383-block 16
+        1:  383-block 17
+        1:  383-block 18
+    $$$$$:  383-block 19
+    $$$$$:  383-block 20
+    $$$$$:  383-block 21
+    $$$$$:  383-block 22
+    $$$$$:  383-block 23
+    $$$$$:  383-block 24
+    $$$$$:  383-block 25
+    $$$$$:  383-block 26
+    $$$$$:  383-block 27
+    $$$$$:  383-block 28
+    $$$$$:  383-block 29
+    $$$$$:  383-block 30
+    $$$$$:  383-block 31
+    $$$$$:  383-block 32
+    $$$$$:  383-block 33
+    $$$$$:  383-block 34
+    $$$$$:  383-block 35
+    $$$$$:  383-block 36
+        1:  384:}
+        1:  384-block  0
+        -:  385:
+        1:  386:void Tests::adminUpdate_MovieNotInTheList_ReturnsMinusOne()
+        -:  387:{
+        1:  388:    Repository* repositoryUsed = new Repository();
+        1:  388-block  0
+        1:  388-block  1
+    $$$$$:  388-block  2
+        1:  389:    AdminService adminServiceUsed = {*repositoryUsed};
+        1:  389-block  0
+       1*:  390:    assert(adminServiceUsed.adminUpdateMovie("Test", "CategoryTest", 123, 456, "TrailerTest") == -1);
+        1:  390-block  0
+        1:  390-block  1
+        1:  390-block  2
+        1:  390-block  3
+        1:  390-block  4
+    %%%%%:  390-block  5
+        1:  390-block  6
+    %%%%%:  390-block  7
+        1:  390-block  8
+        1:  390-block  9
+        1:  390-block 10
+        1:  390-block 11
+        1:  390-block 12
+        1:  390-block 13
+        1:  390-block 14
+        1:  390-block 15
+        1:  390-block 16
+        1:  390-block 17
+        1:  390-block 18
+        1:  390-block 19
+    $$$$$:  390-block 20
+    $$$$$:  390-block 21
+    $$$$$:  390-block 22
+    $$$$$:  390-block 23
+    $$$$$:  390-block 24
+    $$$$$:  390-block 25
+    $$$$$:  390-block 26
+    $$$$$:  390-block 27
+    $$$$$:  390-block 28
+    $$$$$:  390-block 29
+    $$$$$:  390-block 30
+    $$$$$:  390-block 31
+    $$$$$:  390-block 32
+    $$$$$:  390-block 33
+    $$$$$:  390-block 34
+    $$$$$:  390-block 35
+    $$$$$:  390-block 36
+    $$$$$:  390-block 37
+        1:  391:}
+        1:  391-block  0
+        -:  392:
+        1:  393:void Tests::adminGetMovieList_AnyAdminService_CorrectMovies()
+        -:  394:{
+        1:  395:    Repository* repositoryUsed = new Repository();
+        1:  395-block  0
+        1:  395-block  1
+    $$$$$:  395-block  2
+        1:  396:    AdminService adminServiceUsed = {*repositoryUsed};
+        1:  396-block  0
+        1:  397:    adminServiceUsed.adminAddMovie("Test", "CategoryTest", 123, 456, "TrailerTest");
+        1:  397-block  0
+        1:  397-block  1
+        1:  397-block  2
+        1:  397-block  3
+        1:  397-block  4
+    $$$$$:  397-block  5
+    $$$$$:  397-block  6
+    $$$$$:  397-block  7
+    $$$$$:  397-block  8
+    $$$$$:  397-block  9
+    $$$$$:  397-block 10
+    $$$$$:  397-block 11
+    $$$$$:  397-block 12
+    $$$$$:  397-block 13
+    $$$$$:  397-block 14
+    $$$$$:  397-block 15
+    $$$$$:  397-block 16
+        2:  398:    std::vector<Movie>listOfMovies = adminServiceUsed.adminGetMovieList();
+        1:  398-block  0
+    $$$$$:  398-block  1
+       1*:  399:    assert(listOfMovies.size() == 11);
+        1:  399-block  0
+    %%%%%:  399-block  1
+        1:  399-block  2
+    %%%%%:  399-block  3
+        1:  400:}
+        -:  401:
+        1:  402:void Tests::UserService_AnyUserService_UserServiceCreated()
+        -:  403:{
+        1:  404:    Repository* repositoryUsed = new Repository();
+        1:  404-block  0
+        1:  404-block  1
+    $$$$$:  404-block  2
+        1:  405:    UserService userServiceUsed = {*repositoryUsed};
+        1:  405-block  0
+        1:  405-block  1
+        1:  406:}
+        -:  407:
+        1:  408:void Tests::userGetMovieList_AnyUserService_CorrectMovies()
+        -:  409:{
+        1:  410:    Repository* repositoryUsed = new Repository();
+        1:  410-block  0
+        1:  410-block  1
+    $$$$$:  410-block  2
+        2:  411:    UserService userServiceUsed = { *repositoryUsed };
+        1:  411-block  0
+    $$$$$:  411-block  1
+        1:  412:    AdminService adminServiceUsed = { *repositoryUsed };
+        1:  412-block  0
+        1:  413:    adminServiceUsed.adminAddMovie("Test", "CategoryTest", 123, 456, "TrailerTest");
+        1:  413-block  0
+        1:  413-block  1
+        1:  413-block  2
+        1:  413-block  3
+        1:  413-block  4
+    $$$$$:  413-block  5
+    $$$$$:  413-block  6
+    $$$$$:  413-block  7
+    $$$$$:  413-block  8
+    $$$$$:  413-block  9
+    $$$$$:  413-block 10
+    $$$$$:  413-block 11
+    $$$$$:  413-block 12
+    $$$$$:  413-block 13
+    $$$$$:  413-block 14
+    $$$$$:  413-block 15
+    $$$$$:  413-block 16
+        2:  414:    std::vector<Movie>listOfMovies = userServiceUsed.userGetMovieList();
+        1:  414-block  0
+    $$$$$:  414-block  1
+       1*:  415:    assert(listOfMovies.size() == 11);
+        1:  415-block  0
+    %%%%%:  415-block  1
+        1:  415-block  2
+    %%%%%:  415-block  3
+        1:  416:}
+        -:  417:
+        1:  418:void Tests::userGetWatchList_AnyUserService_CorrectWatchList()
+        -:  419:{
+        2:  420:    Repository repositoryUsed{};
+        1:  420-block  0
+    $$$$$:  420-block  1
+        2:  421:    UserService userServiceUsed { repositoryUsed };
+        1:  421-block  0
+    $$$$$:  421-block  1
+        1:  422:    AdminService adminServiceUsed { repositoryUsed };
+        1:  422-block  0
+        1:  423:    adminServiceUsed.adminAddMovie("Test", "CategoryTest", 123, 456, "TrailerTest");
+        1:  423-block  0
+        1:  423-block  1
+        1:  423-block  2
+        1:  423-block  3
+        1:  423-block  4
+    $$$$$:  423-block  5
+    $$$$$:  423-block  6
+    $$$$$:  423-block  7
+    $$$$$:  423-block  8
+    $$$$$:  423-block  9
+    $$$$$:  423-block 10
+    $$$$$:  423-block 11
+    $$$$$:  423-block 12
+    $$$$$:  423-block 13
+    $$$$$:  423-block 14
+    $$$$$:  423-block 15
+    $$$$$:  423-block 16
+        1:  424:    userServiceUsed.listMoviesByGenre("");
+        1:  424-block  0
+        1:  424-block  1
+    $$$$$:  424-block  2
+    $$$$$:  424-block  3
+    $$$$$:  424-block  4
+    $$$$$:  424-block  5
+        1:  425:    userServiceUsed.addMovieToWatchList();
+        2:  426:    std::vector<Movie>listOfMovies = userServiceUsed.userGetWatchList();
+        1:  426-block  0
+        1:  426-block  1
+    $$$$$:  426-block  2
+       1*:  427:    assert(listOfMovies.size() == 1);
+        1:  427-block  0
+    %%%%%:  427-block  1
+        1:  427-block  2
+    %%%%%:  427-block  3
+        1:  428:}
+        -:  429:
+        1:  430:void Tests::listMoviesByGenre_NoMovieWithGenre_ReturnsMinusOne()
+        -:  431:{
+        1:  432:    Repository* repositoryUsed = new Repository();
+        1:  432-block  0
+        1:  432-block  1
+    $$$$$:  432-block  2
+        1:  433:    UserService userServiceUsed = { *repositoryUsed };
+        1:  433-block  0
+    $$$$$:  433-block  1
+        1:  434:    AdminService adminServiceUsed = { *repositoryUsed };
+        1:  434-block  0
+        1:  435:    adminServiceUsed.adminAddMovie("Test", "CategoryTest", 123, 456, "TrailerTest");
+        1:  435-block  0
+        1:  435-block  1
+        1:  435-block  2
+        1:  435-block  3
+        1:  435-block  4
+    $$$$$:  435-block  5
+    $$$$$:  435-block  6
+    $$$$$:  435-block  7
+    $$$$$:  435-block  8
+    $$$$$:  435-block  9
+    $$$$$:  435-block 10
+    $$$$$:  435-block 11
+    $$$$$:  435-block 12
+    $$$$$:  435-block 13
+    $$$$$:  435-block 14
+    $$$$$:  435-block 15
+    $$$$$:  435-block 16
+       1*:  436:    assert(userServiceUsed.listMoviesByGenre("Comedy") == -1);
+        1:  436-block  0
+        1:  436-block  1
+    %%%%%:  436-block  2
+        1:  436-block  3
+    %%%%%:  436-block  4
+        1:  436-block  5
+        1:  436-block  6
+        1:  436-block  7
+        1:  436-block  8
+        1:  436-block  9
+    $$$$$:  436-block 10
+    $$$$$:  436-block 11
+    $$$$$:  436-block 12
+    $$$$$:  436-block 13
+    $$$$$:  436-block 14
+    $$$$$:  436-block 15
+        -:  437:
+        1:  438:}
+        -:  439:
+        1:  440:void Tests::listMoviesByGenre_ExistsMovieWithGenre_ReturnsOne()
+        -:  441:{
+        1:  442:    Repository* repositoryUsed = new Repository();
+        1:  442-block  0
+        1:  442-block  1
+    $$$$$:  442-block  2
+        1:  443:    UserService userServiceUsed = { *repositoryUsed };
+        1:  443-block  0
+    $$$$$:  443-block  1
+        1:  444:    AdminService adminServiceUsed = { *repositoryUsed };
+        1:  444-block  0
+        1:  445:    adminServiceUsed.adminAddMovie("Test", "CategoryTest", 123, 456, "TrailerTest");
+        1:  445-block  0
+        1:  445-block  1
+        1:  445-block  2
+        1:  445-block  3
+        1:  445-block  4
+    $$$$$:  445-block  5
+    $$$$$:  445-block  6
+    $$$$$:  445-block  7
+    $$$$$:  445-block  8
+    $$$$$:  445-block  9
+    $$$$$:  445-block 10
+    $$$$$:  445-block 11
+    $$$$$:  445-block 12
+    $$$$$:  445-block 13
+    $$$$$:  445-block 14
+    $$$$$:  445-block 15
+    $$$$$:  445-block 16
+       1*:  446:    assert(userServiceUsed.listMoviesByGenre("CategoryTest") == 1);
+        1:  446-block  0
+        1:  446-block  1
+    %%%%%:  446-block  2
+        1:  446-block  3
+    %%%%%:  446-block  4
+        1:  446-block  5
+        1:  446-block  6
+        1:  446-block  7
+        1:  446-block  8
+        1:  446-block  9
+    $$$$$:  446-block 10
+    $$$$$:  446-block 11
+    $$$$$:  446-block 12
+    $$$$$:  446-block 13
+    $$$$$:  446-block 14
+    $$$$$:  446-block 15
+        -:  447:
+        1:  448:}
+        -:  449:
+        1:  450:void Tests::addMovieToWatchList_ExistsMovieInWatchLists_ReturnsMinusOne()
+        -:  451:{
+        1:  452:    Repository* repositoryUsed = new Repository();
+        1:  452-block  0
+        1:  452-block  1
+    $$$$$:  452-block  2
+        2:  453:    UserService userServiceUsed = { *repositoryUsed };
+        1:  453-block  0
+        1:  453-block  1
+    $$$$$:  453-block  2
+        1:  454:    AdminService adminServiceUsed = { *repositoryUsed };
+        1:  454-block  0
+        1:  455:    adminServiceUsed.adminAddMovie("Test", "CategoryTest", 123, 456, "TrailerTest");
+        1:  455-block  0
+        1:  455-block  1
+        1:  455-block  2
+        1:  455-block  3
+        1:  455-block  4
+    $$$$$:  455-block  5
+    $$$$$:  455-block  6
+    $$$$$:  455-block  7
+    $$$$$:  455-block  8
+    $$$$$:  455-block  9
+    $$$$$:  455-block 10
+    $$$$$:  455-block 11
+    $$$$$:  455-block 12
+    $$$$$:  455-block 13
+    $$$$$:  455-block 14
+    $$$$$:  455-block 15
+    $$$$$:  455-block 16
+        1:  456:    userServiceUsed.listMoviesByGenre("CategoryTest");
+        1:  456-block  0
+        1:  456-block  1
+    $$$$$:  456-block  2
+    $$$$$:  456-block  3
+    $$$$$:  456-block  4
+    $$$$$:  456-block  5
+        1:  457:    userServiceUsed.addMovieToWatchList();
+       1*:  458:    assert(userServiceUsed.addMovieToWatchList() == -1);
+        1:  458-block  0
+        1:  458-block  1
+    %%%%%:  458-block  2
+        1:  458-block  3
+    %%%%%:  458-block  4
+        -:  459:
+        1:  460:}
+        -:  461:
+        1:  462:void Tests::addMovieToWatchList_MovieNotInWatchLists_ReturnsOne()
+        -:  463:{
+        1:  464:    Repository* repositoryUsed = new Repository();
+        1:  464-block  0
+        1:  464-block  1
+    $$$$$:  464-block  2
+        2:  465:    UserService userServiceUsed = { *repositoryUsed };
+        1:  465-block  0
+        1:  465-block  1
+    $$$$$:  465-block  2
+        1:  466:    AdminService adminServiceUsed = { *repositoryUsed };
+        1:  466-block  0
+        1:  467:    adminServiceUsed.adminAddMovie("Test", "CategoryTest", 123, 456, "TrailerTest");
+        1:  467-block  0
+        1:  467-block  1
+        1:  467-block  2
+        1:  467-block  3
+        1:  467-block  4
+    $$$$$:  467-block  5
+    $$$$$:  467-block  6
+    $$$$$:  467-block  7
+    $$$$$:  467-block  8
+    $$$$$:  467-block  9
+    $$$$$:  467-block 10
+    $$$$$:  467-block 11
+    $$$$$:  467-block 12
+    $$$$$:  467-block 13
+    $$$$$:  467-block 14
+    $$$$$:  467-block 15
+    $$$$$:  467-block 16
+        1:  468:    userServiceUsed.listMoviesByGenre("CategoryTest");
+        1:  468-block  0
+        1:  468-block  1
+    $$$$$:  468-block  2
+    $$$$$:  468-block  3
+    $$$$$:  468-block  4
+    $$$$$:  468-block  5
+       1*:  469:    assert(userServiceUsed.addMovieToWatchList() == 1);
+        1:  469-block  0
+    %%%%%:  469-block  1
+        1:  469-block  2
+    %%%%%:  469-block  3
+        1:  470:}
+        -:  471:
+        1:  472:void Tests::addMovieToWatchListByTitle_NoMovieInMovieLists_ReturnsMinusOne()
+        -:  473:{
+        1:  474:    Repository* repositoryUsed = new Repository();
+        1:  474-block  0
+        1:  474-block  1
+    $$$$$:  474-block  2
+        1:  475:    UserService userServiceUsed = { *repositoryUsed };
+        1:  475-block  0
+    $$$$$:  475-block  1
+        1:  476:    AdminService adminServiceUsed = { *repositoryUsed };
+        1:  476-block  0
+        1:  477:    adminServiceUsed.adminAddMovie("Test", "CategoryTest", 123, 456, "TrailerTest");
+        1:  477-block  0
+        1:  477-block  1
+        1:  477-block  2
+        1:  477-block  3
+        1:  477-block  4
+    $$$$$:  477-block  5
+    $$$$$:  477-block  6
+    $$$$$:  477-block  7
+    $$$$$:  477-block  8
+    $$$$$:  477-block  9
+    $$$$$:  477-block 10
+    $$$$$:  477-block 11
+    $$$$$:  477-block 12
+    $$$$$:  477-block 13
+    $$$$$:  477-block 14
+    $$$$$:  477-block 15
+    $$$$$:  477-block 16
+       1*:  478:    assert(userServiceUsed.addMovieToWatchListByTitle("Hangover") == -1);
+        1:  478-block  0
+        1:  478-block  1
+    %%%%%:  478-block  2
+        1:  478-block  3
+    %%%%%:  478-block  4
+        1:  478-block  5
+        1:  478-block  6
+        1:  478-block  7
+        1:  478-block  8
+        1:  478-block  9
+    $$$$$:  478-block 10
+    $$$$$:  478-block 11
+    $$$$$:  478-block 12
+    $$$$$:  478-block 13
+    $$$$$:  478-block 14
+    $$$$$:  478-block 15
+        1:  479:}
+        -:  480:
+        1:  481:void Tests::addMovieToWatchListByTitle_MovieInMovieLists_ReturnsOne()
+        -:  482:{
+        1:  483:    Repository* repositoryUsed = new Repository();
+        1:  483-block  0
+        1:  483-block  1
+    $$$$$:  483-block  2
+        1:  484:    UserService userServiceUsed = { *repositoryUsed };
+        1:  484-block  0
+    $$$$$:  484-block  1
+        1:  485:    AdminService adminServiceUsed = { *repositoryUsed };
+        1:  485-block  0
+        1:  486:    adminServiceUsed.adminAddMovie("Test", "CategoryTest", 123, 456, "TrailerTest");
+        1:  486-block  0
+        1:  486-block  1
+        1:  486-block  2
+        1:  486-block  3
+        1:  486-block  4
+    $$$$$:  486-block  5
+    $$$$$:  486-block  6
+    $$$$$:  486-block  7
+    $$$$$:  486-block  8
+    $$$$$:  486-block  9
+    $$$$$:  486-block 10
+    $$$$$:  486-block 11
+    $$$$$:  486-block 12
+    $$$$$:  486-block 13
+    $$$$$:  486-block 14
+    $$$$$:  486-block 15
+    $$$$$:  486-block 16
+       1*:  487:    assert(userServiceUsed.addMovieToWatchListByTitle("Test") == 1);
+        1:  487-block  0
+        1:  487-block  1
+    %%%%%:  487-block  2
+        1:  487-block  3
+    %%%%%:  487-block  4
+        1:  487-block  5
+        1:  487-block  6
+        1:  487-block  7
+        1:  487-block  8
+        1:  487-block  9
+    $$$$$:  487-block 10
+    $$$$$:  487-block 11
+    $$$$$:  487-block 12
+    $$$$$:  487-block 13
+    $$$$$:  487-block 14
+    $$$$$:  487-block 15
+        1:  488:}
+        -:  489:
+        1:  490:void Tests::getWatchListLength_AnyUserService_CorrectLength()
+        -:  491:{
+        1:  492:    Repository* repositoryUsed = new Repository();
+        1:  492-block  0
+        1:  492-block  1
+    $$$$$:  492-block  2
+        2:  493:    UserService userServiceUsed = { *repositoryUsed };
+        1:  493-block  0
+        1:  493-block  1
+    $$$$$:  493-block  2
+        1:  494:    AdminService adminServiceUsed = { *repositoryUsed };
+        1:  494-block  0
+        1:  495:    adminServiceUsed.adminAddMovie("Test", "CategoryTest", 123, 456, "TrailerTest");
+        1:  495-block  0
+        1:  495-block  1
+        1:  495-block  2
+        1:  495-block  3
+        1:  495-block  4
+    $$$$$:  495-block  5
+    $$$$$:  495-block  6
+    $$$$$:  495-block  7
+    $$$$$:  495-block  8
+    $$$$$:  495-block  9
+    $$$$$:  495-block 10
+    $$$$$:  495-block 11
+    $$$$$:  495-block 12
+    $$$$$:  495-block 13
+    $$$$$:  495-block 14
+    $$$$$:  495-block 15
+    $$$$$:  495-block 16
+        1:  496:    userServiceUsed.addMovieToWatchListByTitle("Test");
+        1:  496-block  0
+        1:  496-block  1
+    $$$$$:  496-block  2
+    $$$$$:  496-block  3
+    $$$$$:  496-block  4
+    $$$$$:  496-block  5
+       1*:  497:    assert(userServiceUsed.getWatchListLength() == 1);
+        1:  497-block  0
+    %%%%%:  497-block  1
+        1:  497-block  2
+    %%%%%:  497-block  3
+        1:  498:}
+        -:  499:
+        1:  500:void Tests::goToNextMovieByGenre_AnyUserService_CorrectPosition(){
+        1:  501:    Repository* repositoryUsed = new Repository();
+        1:  501-block  0
+        1:  501-block  1
+    $$$$$:  501-block  2
+        2:  502:    UserService userServiceUsed = { *repositoryUsed };
+        1:  502-block  0
+    $$$$$:  502-block  1
+        1:  503:    AdminService adminServiceUsed = { *repositoryUsed };
+        1:  503-block  0
+        1:  504:    adminServiceUsed.adminAddMovie("Test", "CategoryTest", 123, 456, "TrailerTest");
+        1:  504-block  0
+        1:  504-block  1
+        1:  504-block  2
+        1:  504-block  3
+        1:  504-block  4
+    $$$$$:  504-block  5
+    $$$$$:  504-block  6
+    $$$$$:  504-block  7
+    $$$$$:  504-block  8
+    $$$$$:  504-block  9
+    $$$$$:  504-block 10
+    $$$$$:  504-block 11
+    $$$$$:  504-block 12
+    $$$$$:  504-block 13
+    $$$$$:  504-block 14
+    $$$$$:  504-block 15
+    $$$$$:  504-block 16
+        1:  505:    adminServiceUsed.adminAddMovie("Test2", "CategoryTest", 123, 456, "TrailerTest");
+        1:  505-block  0
+        1:  505-block  1
+        1:  505-block  2
+        1:  505-block  3
+    $$$$$:  505-block  4
+    $$$$$:  505-block  5
+    $$$$$:  505-block  6
+    $$$$$:  505-block  7
+    $$$$$:  505-block  8
+    $$$$$:  505-block  9
+    $$$$$:  505-block 10
+    $$$$$:  505-block 11
+    $$$$$:  505-block 12
+    $$$$$:  505-block 13
+    $$$$$:  505-block 14
+    $$$$$:  505-block 15
+        1:  506:    adminServiceUsed.adminAddMovie("Test3", "CategoryTest", 123, 456, "TrailerTest");
+        1:  506-block  0
+        1:  506-block  1
+        1:  506-block  2
+        1:  506-block  3
+    $$$$$:  506-block  4
+    $$$$$:  506-block  5
+    $$$$$:  506-block  6
+    $$$$$:  506-block  7
+    $$$$$:  506-block  8
+    $$$$$:  506-block  9
+    $$$$$:  506-block 10
+    $$$$$:  506-block 11
+    $$$$$:  506-block 12
+    $$$$$:  506-block 13
+    $$$$$:  506-block 14
+    $$$$$:  506-block 15
+        1:  507:    userServiceUsed.listMoviesByGenre("CategoryTest");
+        1:  507-block  0
+        1:  507-block  1
+    $$$$$:  507-block  2
+    $$$$$:  507-block  3
+    $$$$$:  507-block  4
+    $$$$$:  507-block  5
+        1:  508:    userServiceUsed.goToNextMovieByGenre();
+        2:  509:    Movie movieUsed = userServiceUsed.getCurrentMovie();
+        1:  509-block  0
+        1:  509-block  1
+    $$$$$:  509-block  2
+       1*:  510:    assert(movieUsed.getTitle() == "Test2");
+        1:  510-block  0
+        1:  510-block  1
+    %%%%%:  510-block  2
+        1:  510-block  3
+    %%%%%:  510-block  4
+        1:  511:}
+        -:  512:
+        1:  513:void Tests::goToNextMovieByGenre_AnyUserService_FirstPosition(){
+        1:  514:    Repository* repositoryUsed = new Repository();
+        1:  514-block  0
+        1:  514-block  1
+    $$$$$:  514-block  2
+        2:  515:    UserService userServiceUsed = { *repositoryUsed };
+        1:  515-block  0
+    $$$$$:  515-block  1
+        1:  516:    AdminService adminServiceUsed = { *repositoryUsed };
+        1:  516-block  0
+        1:  517:    adminServiceUsed.adminAddMovie("Test", "CategoryTest", 123, 456, "TrailerTest");
+        1:  517-block  0
+        1:  517-block  1
+        1:  517-block  2
+        1:  517-block  3
+        1:  517-block  4
+    $$$$$:  517-block  5
+    $$$$$:  517-block  6
+    $$$$$:  517-block  7
+    $$$$$:  517-block  8
+    $$$$$:  517-block  9
+    $$$$$:  517-block 10
+    $$$$$:  517-block 11
+    $$$$$:  517-block 12
+    $$$$$:  517-block 13
+    $$$$$:  517-block 14
+    $$$$$:  517-block 15
+    $$$$$:  517-block 16
+        1:  518:    adminServiceUsed.adminAddMovie("Test2", "CategoryTest", 123, 456, "TrailerTest");
+        1:  518-block  0
+        1:  518-block  1
+        1:  518-block  2
+        1:  518-block  3
+    $$$$$:  518-block  4
+    $$$$$:  518-block  5
+    $$$$$:  518-block  6
+    $$$$$:  518-block  7
+    $$$$$:  518-block  8
+    $$$$$:  518-block  9
+    $$$$$:  518-block 10
+    $$$$$:  518-block 11
+    $$$$$:  518-block 12
+    $$$$$:  518-block 13
+    $$$$$:  518-block 14
+    $$$$$:  518-block 15
+        1:  519:    adminServiceUsed.adminAddMovie("Test3", "CategoryTest", 123, 456, "TrailerTest");
+        1:  519-block  0
+        1:  519-block  1
+        1:  519-block  2
+        1:  519-block  3
+    $$$$$:  519-block  4
+    $$$$$:  519-block  5
+    $$$$$:  519-block  6
+    $$$$$:  519-block  7
+    $$$$$:  519-block  8
+    $$$$$:  519-block  9
+    $$$$$:  519-block 10
+    $$$$$:  519-block 11
+    $$$$$:  519-block 12
+    $$$$$:  519-block 13
+    $$$$$:  519-block 14
+    $$$$$:  519-block 15
+        1:  520:    userServiceUsed.listMoviesByGenre("CategoryTest");
+        1:  520-block  0
+        1:  520-block  1
+    $$$$$:  520-block  2
+    $$$$$:  520-block  3
+    $$$$$:  520-block  4
+    $$$$$:  520-block  5
+        1:  521:    userServiceUsed.goToNextMovieByGenre();
+        1:  522:    userServiceUsed.goToNextMovieByGenre();
+        1:  522-block  0
+        1:  523:    userServiceUsed.goToNextMovieByGenre();
+        1:  523-block  0
+        2:  524:    Movie movieUsed = userServiceUsed.getCurrentMovie();
+        1:  524-block  0
+        1:  524-block  1
+    $$$$$:  524-block  2
+       1*:  525:    assert(movieUsed.getTitle() == "Test");
+        1:  525-block  0
+        1:  525-block  1
+    %%%%%:  525-block  2
+        1:  525-block  3
+    %%%%%:  525-block  4
+        1:  526:}
+        -:  527:
+        1:  528:void Tests::removeWatchListMovie_AnyUserService_Liked() {
+        1:  529:    Repository* repositoryUsed = new Repository();
+        1:  529-block  0
+        1:  529-block  1
+    $$$$$:  529-block  2
+        1:  530:    UserService userServiceUsed = { *repositoryUsed };
+        1:  530-block  0
+    $$$$$:  530-block  1
+        1:  531:    AdminService adminServiceUsed = { *repositoryUsed };
+        1:  531-block  0
+        1:  532:    adminServiceUsed.adminAddMovie("Test", "CategoryTest", 123, 456, "TrailerTest");
+        1:  532-block  0
+        1:  532-block  1
+        1:  532-block  2
+        1:  532-block  3
+        1:  532-block  4
+    $$$$$:  532-block  5
+    $$$$$:  532-block  6
+    $$$$$:  532-block  7
+    $$$$$:  532-block  8
+    $$$$$:  532-block  9
+    $$$$$:  532-block 10
+    $$$$$:  532-block 11
+    $$$$$:  532-block 12
+    $$$$$:  532-block 13
+    $$$$$:  532-block 14
+    $$$$$:  532-block 15
+    $$$$$:  532-block 16
+        1:  533:    userServiceUsed.addMovieToWatchListByTitle("Test");
+        1:  533-block  0
+        1:  533-block  1
+    $$$$$:  533-block  2
+    $$$$$:  533-block  3
+    $$$$$:  533-block  4
+    $$$$$:  533-block  5
+       1*:  534:    assert(userServiceUsed.removeMovieFromWatchList("Test", true) == 1);
+        1:  534-block  0
+        1:  534-block  1
+    %%%%%:  534-block  2
+        1:  534-block  3
+    %%%%%:  534-block  4
+        1:  534-block  5
+        1:  534-block  6
+        1:  534-block  7
+        1:  534-block  8
+        1:  534-block  9
+    $$$$$:  534-block 10
+    $$$$$:  534-block 11
+    $$$$$:  534-block 12
+    $$$$$:  534-block 13
+    $$$$$:  534-block 14
+    $$$$$:  534-block 15
+        1:  535:}

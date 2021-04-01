@@ -1,0 +1,251 @@
+        -:    0:Source:C:/Users/araul/CLionProjects/a45-araulo22/AdminService.cpp
+        -:    0:Graph:C:\Users\araul\CLionProjects\a45-araulo22\cmake-build-debug-coverage\CMakeFiles\a45_araulo22.dir\AdminService.cpp.gcno
+        -:    0:Data:C:\Users\araul\CLionProjects\a45-araulo22\cmake-build-debug-coverage\CMakeFiles\a45_araulo22.dir\AdminService.cpp.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1://
+        -:    2:// Created by araul on 28.03.2021.
+        -:    3://
+        -:    4:#include "AdminService.h"
+        -:    5:
+        -:    6://AdminService constructor
+       21:    7:AdminService::AdminService(Repository& repository):repository{repository}{populate();}
+       21:    7-block  0
+        -:    8:
+        -:    9:/*
+        -:   10:	Add a movie in the list - title - title of the movie
+        -:   11:							genre - genre of the movie
+        -:   12:							yearOfRelease - the year when the movie was released
+        -:   13:							numberOfLikes - trailer's number of likes
+        -:   14:							trailer - link to the movie's trailer
+        -:   15:*/
+      232:   16:int AdminService::adminAddMovie(const std::string& title, const std::string& genre, int yearOfRelease, int numberOfLikes, const std::string& trailer)
+        -:   17:{
+      464:   18:    Movie movieUsed{ title, genre, trailer, yearOfRelease, numberOfLikes };
+      232:   18-block  0
+      232:   18-block  1
+    $$$$$:   18-block  2
+      464:   19:    return repository.addMovie(movieUsed);
+      232:   19-block  0
+      232:   19-block  1
+      232:   19-block  2
+        -:   20:}
+        -:   21:
+        -:   22:/*
+        -:   23:	Delete a movie from the list, by its title
+        -:   24:*/
+        2:   25:int AdminService::adminDeleteMovie(const std::string& title)
+        -:   26:{
+        6:   27:    Movie movieUsed{ title, "fillGenre", "No trailer", 1900, 0 };
+        2:   27-block  0
+        2:   27-block  1
+        2:   27-block  2
+        2:   27-block  3
+    $$$$$:   27-block  4
+    $$$$$:   27-block  5
+    $$$$$:   27-block  6
+    $$$$$:   27-block  7
+    $$$$$:   27-block  8
+        4:   28:    return repository.deleteMovie(movieUsed);
+        2:   28-block  0
+        2:   28-block  1
+        -:   29:}
+        -:   30:
+        -:   31:/*
+        -:   32:	Update a movie in the list - title - title of the movie to be updated
+        -:   33:							genre - genre of the movie to update with
+        -:   34:							yearOfRelease - the year when the movie was released to update with
+        -:   35:							numberOfLikes - trailer's number of likes to update with
+        -:   36:							trailer - link to the movie's trailer to update with
+        -:   37:*/
+        2:   38:int AdminService::adminUpdateMovie(const std::string& title, const std::string& genre, int yearOfRelease, int numberOfLikes, const std::string& trailer)
+        -:   39:{
+        4:   40:    Movie movieUsed{ title, genre, trailer, yearOfRelease, numberOfLikes };
+        2:   40-block  0
+        2:   40-block  1
+    $$$$$:   40-block  2
+        4:   41:    return repository.updateMovie(movieUsed);
+        2:   41-block  0
+        2:   41-block  1
+        2:   41-block  2
+        -:   42:}
+        -:   43:
+        -:   44://Return the list of movies
+        1:   45:std::vector<Movie> AdminService::adminGetMovieList()
+        -:   46:{
+        1:   47:    return repository.getAllMovies();
+        1:   47-block  0
+        -:   48:}
+        -:   49:
+       21:   50:void AdminService::populate() {
+       21:   51:    adminAddMovie("The_Shawshank_Redemption", "Drama", 1994, 2367734, "https://www.imdb.com/video/vi3877612057?playlistId=tt0111161&ref_=tt_ov_vi");
+       21:   51-block  0
+       21:   51-block  1
+       21:   51-block  2
+       21:   51-block  3
+       21:   51-block  4
+    $$$$$:   51-block  5
+    $$$$$:   51-block  6
+    $$$$$:   51-block  7
+    $$$$$:   51-block  8
+    $$$$$:   51-block  9
+    $$$$$:   51-block 10
+    $$$$$:   51-block 11
+    $$$$$:   51-block 12
+    $$$$$:   51-block 13
+    $$$$$:   51-block 14
+    $$$$$:   51-block 15
+    $$$$$:   51-block 16
+       21:   52:    adminAddMovie("The_Godfather", "Drama", 1972, 1639457, "https://www.imdb.com/video/vi1348706585?playlistId=tt0068646&ref_=tt_ov_vi");
+       21:   52-block  0
+       21:   52-block  1
+       21:   52-block  2
+       21:   52-block  3
+    $$$$$:   52-block  4
+    $$$$$:   52-block  5
+    $$$$$:   52-block  6
+    $$$$$:   52-block  7
+    $$$$$:   52-block  8
+    $$$$$:   52-block  9
+    $$$$$:   52-block 10
+    $$$$$:   52-block 11
+    $$$$$:   52-block 12
+    $$$$$:   52-block 13
+    $$$$$:   52-block 14
+    $$$$$:   52-block 15
+       21:   53:    adminAddMovie("The_Dark_Knight", "Action", 2008, 2330250, "https://www.imdb.com/video/vi324468761?playlistId=tt0468569&ref_=tt_ov_vi");
+       21:   53-block  0
+       21:   53-block  1
+       21:   53-block  2
+       21:   53-block  3
+    $$$$$:   53-block  4
+    $$$$$:   53-block  5
+    $$$$$:   53-block  6
+    $$$$$:   53-block  7
+    $$$$$:   53-block  8
+    $$$$$:   53-block  9
+    $$$$$:   53-block 10
+    $$$$$:   53-block 11
+    $$$$$:   53-block 12
+    $$$$$:   53-block 13
+    $$$$$:   53-block 14
+    $$$$$:   53-block 15
+       21:   54:    adminAddMovie("12_Angry_Men", "Crime", 1957, 698568, "https://www.imdb.com/video/vi3452609817?playlistId=tt0050083&ref_=tt_ov_vi");
+       21:   54-block  0
+       21:   54-block  1
+       21:   54-block  2
+       21:   54-block  3
+    $$$$$:   54-block  4
+    $$$$$:   54-block  5
+    $$$$$:   54-block  6
+    $$$$$:   54-block  7
+    $$$$$:   54-block  8
+    $$$$$:   54-block  9
+    $$$$$:   54-block 10
+    $$$$$:   54-block 11
+    $$$$$:   54-block 12
+    $$$$$:   54-block 13
+    $$$$$:   54-block 14
+    $$$$$:   54-block 15
+       21:   55:    adminAddMovie("Schindler's_List", "Drama", 1993, 1224635, "https://www.imdb.com/video/vi1158527769?playlistId=tt0108052&ref_=tt_ov_vi");
+       21:   55-block  0
+       21:   55-block  1
+       21:   55-block  2
+       21:   55-block  3
+    $$$$$:   55-block  4
+    $$$$$:   55-block  5
+    $$$$$:   55-block  6
+    $$$$$:   55-block  7
+    $$$$$:   55-block  8
+    $$$$$:   55-block  9
+    $$$$$:   55-block 10
+    $$$$$:   55-block 11
+    $$$$$:   55-block 12
+    $$$$$:   55-block 13
+    $$$$$:   55-block 14
+    $$$$$:   55-block 15
+       21:   56:    adminAddMovie("LOTR:_The_Return_of_the_King", "Action", 2003, 1658040, "https://www.imdb.com/video/vi2073101337?playlistId=tt0167260&ref_=tt_ov_vi");
+       21:   56-block  0
+       21:   56-block  1
+       21:   56-block  2
+       21:   56-block  3
+    $$$$$:   56-block  4
+    $$$$$:   56-block  5
+    $$$$$:   56-block  6
+    $$$$$:   56-block  7
+    $$$$$:   56-block  8
+    $$$$$:   56-block  9
+    $$$$$:   56-block 10
+    $$$$$:   56-block 11
+    $$$$$:   56-block 12
+    $$$$$:   56-block 13
+    $$$$$:   56-block 14
+    $$$$$:   56-block 15
+       21:   57:    adminAddMovie("Pulp_Fiction", "Crime", 1994, 2367734, "https://www.imdb.com/video/vi2620371481?playlistId=tt0110912&ref_=tt_ov_vi");
+       21:   57-block  0
+       21:   57-block  1
+       21:   57-block  2
+       21:   57-block  3
+    $$$$$:   57-block  4
+    $$$$$:   57-block  5
+    $$$$$:   57-block  6
+    $$$$$:   57-block  7
+    $$$$$:   57-block  8
+    $$$$$:   57-block  9
+    $$$$$:   57-block 10
+    $$$$$:   57-block 11
+    $$$$$:   57-block 12
+    $$$$$:   57-block 13
+    $$$$$:   57-block 14
+    $$$$$:   57-block 15
+       21:   58:    adminAddMovie("The_Good,_the_Bad_and_the_Ugly", "Western", 1966, 694664, "https://www.imdb.com/video/vi3416964889?playlistId=tt0060196&ref_=tt_ov_vi");
+       21:   58-block  0
+       21:   58-block  1
+       21:   58-block  2
+       21:   58-block  3
+    $$$$$:   58-block  4
+    $$$$$:   58-block  5
+    $$$$$:   58-block  6
+    $$$$$:   58-block  7
+    $$$$$:   58-block  8
+    $$$$$:   58-block  9
+    $$$$$:   58-block 10
+    $$$$$:   58-block 11
+    $$$$$:   58-block 12
+    $$$$$:   58-block 13
+    $$$$$:   58-block 14
+    $$$$$:   58-block 15
+       21:   59:    adminAddMovie("LOTR:_The_Fellowship_of_the_Ring", "Action", 2001, 1677771, "https://www.imdb.com/video/vi2073101337?playlistId=tt0120737&ref_=tt_ov_vi");
+       21:   59-block  0
+       21:   59-block  1
+       21:   59-block  2
+       21:   59-block  3
+    $$$$$:   59-block  4
+    $$$$$:   59-block  5
+    $$$$$:   59-block  6
+    $$$$$:   59-block  7
+    $$$$$:   59-block  8
+    $$$$$:   59-block  9
+    $$$$$:   59-block 10
+    $$$$$:   59-block 11
+    $$$$$:   59-block 12
+    $$$$$:   59-block 13
+    $$$$$:   59-block 14
+    $$$$$:   59-block 15
+       21:   60:    adminAddMovie("Fight_Club", "Drama", 1999, 1874027, "https://www.imdb.com/video/vi781228825?playlistId=tt0137523&ref_=tt_ov_vi");
+       21:   60-block  0
+       21:   60-block  1
+       21:   60-block  2
+       21:   60-block  3
+    $$$$$:   60-block  4
+    $$$$$:   60-block  5
+    $$$$$:   60-block  6
+    $$$$$:   60-block  7
+    $$$$$:   60-block  8
+    $$$$$:   60-block  9
+    $$$$$:   60-block 10
+    $$$$$:   60-block 11
+    $$$$$:   60-block 12
+    $$$$$:   60-block 13
+    $$$$$:   60-block 14
+       21:   61:}
